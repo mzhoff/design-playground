@@ -1,0 +1,11 @@
+:root {
+  --ds-storybook-bg: #f6efe4;
+  --ds-storybook-ink: #171411;
+  --ds-storybook-accent: #a85f2a;
+}
+
+body {
+  background: var(--ds-storybook-bg);
+  color: var(--ds-storybook-ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+}

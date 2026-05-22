@@ -1,0 +1,8 @@
+:root {
+  --nextra-primary-hue: 27deg;
+  --nextra-primary-saturation: 58%;
+}
+
+body {
+  font-feature-settings: "kern";
+}

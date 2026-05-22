@@ -1,1 +1,2 @@
-export type ComponentStability = "raw" | "candidate" | "stable" | "deprecated"
+export { UiStatusBadge } from "./status-badge";
+export type { UiStatusBadgeProps, UiStatusBadgeTone } from "./status-badge";

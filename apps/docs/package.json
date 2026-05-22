@@ -1,22 +1,29 @@
 {
-  "name": "@design-playground/docs",
+  "name": "@gigonom/docs",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack --port 3102",
+    "dev": "next dev --turbopack -p 3101",
     "build": "next build",
+    "start": "next start -p 3101",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "catalog:",
+    "nextra": "catalog:",
+    "nextra-theme-docs": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
     "@design-playground/typescript-config": "workspace:*",
+    "@types/mdx": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -1,21 +1,31 @@
 {
-  "name": "@design-playground/storybook",
+  "name": "@gigonom/storybook",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "pnpm storybook",
     "storybook": "storybook dev -p 3103 --host 0.0.0.0",
+    "build": "storybook build",
     "build-storybook": "storybook build",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@design-playground/ui-react": "workspace:*",
+    "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
     "@design-playground/typescript-config": "workspace:*",
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/nextjs-vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "storybook": "catalog:",
     "typescript": "catalog:"
   }
 }

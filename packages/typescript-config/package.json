@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./base": "./base.json",
-    "./next": "./next.json",
-    "./react-library": "./react-library.json"
+    "./base.json": "./base.json",
+    "./next.json": "./next.json",
+    "./react-library.json": "./react-library.json"
   }
 }

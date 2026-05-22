@@ -10,17 +10,14 @@
     "build": "tsc -p tsconfig.json",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "dependencies": {
-    "@design-playground/tokens": "workspace:*",
+  "peerDependencies": {
     "react": "catalog:"
   },
   "devDependencies": {
     "@design-playground/typescript-config": "workspace:*",
+    "@types/react": "catalog:",
     "typescript": "catalog:"
-  },
-  "peerDependencies": {
-    "react": ">=19"
   }
 }

@@ -1,1 +1,1 @@
-export type AssetStatus = "raw" | "approved" | "deprecated"
+export const assetRegistryStatus = "planned" as const;
