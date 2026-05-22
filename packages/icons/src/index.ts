@@ -1,1 +1,1 @@
-export const iconRegistryStatus = "planned" as const;
+export const iconRegistryStatus = "planned" as const

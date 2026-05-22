@@ -1,9 +1,9 @@
-import type { TokenDictionary } from "@design-playground/tokens";
+import type { TokenDictionary } from "@design-playground/tokens"
 
 export function compileCssVariables(tokens: TokenDictionary): string {
   const declarations = Object.entries(tokens)
     .map(([name, value]) => `  ${name}: ${value};`)
-    .join("\n");
+    .join("\n")
 
-  return `:root {\n${declarations}\n}`;
+  return `:root {\n${declarations}\n}`
 }

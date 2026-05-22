@@ -1,1 +1,1 @@
-export const assetRegistryStatus = "planned" as const;
+export const assetRegistryStatus = "planned" as const

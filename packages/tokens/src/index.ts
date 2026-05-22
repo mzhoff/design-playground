@@ -6,9 +6,9 @@ export const foundationTokenLayers = [
   "borders",
   "shadows",
   "motion",
-  "icons"
-] as const;
+  "icons",
+] as const
 
-export type FoundationTokenLayer = (typeof foundationTokenLayers)[number];
+export type FoundationTokenLayer = (typeof foundationTokenLayers)[number]
 
-export type TokenDictionary = Record<`--ds-${string}`, string>;
+export type TokenDictionary = Record<`--ds-${string}`, string>

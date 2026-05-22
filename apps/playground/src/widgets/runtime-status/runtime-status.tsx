@@ -1,12 +1,12 @@
-import { compileCssVariables } from "@design-playground/theme-compiler";
-import { UiStatusBadge } from "@design-playground/ui-react";
-import { runtimeSurfaceSummary, stageOneChecklist } from "@/shared/config/project-plan";
+import { compileCssVariables } from "@design-playground/theme-compiler"
+import { UiStatusBadge } from "@design-playground/ui-react"
+import { runtimeSurfaceSummary, stageOneChecklist } from "@/shared/config/project-plan"
 
 const previewTokens = compileCssVariables({
   "--ds-surface": "#f7f3ea",
   "--ds-foreground": "#171411",
-  "--ds-accent": "#a85f2a"
-});
+  "--ds-accent": "#a85f2a",
+})
 
 export function RuntimeStatus() {
   return (
@@ -51,5 +51,5 @@ export function RuntimeStatus() {
         </div>
       </div>
     </section>
-  );
+  )
 }

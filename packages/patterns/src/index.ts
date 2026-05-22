@@ -6,7 +6,7 @@ export const plannedPatternGroups = [
   "forms",
   "text-editing",
   "website-blocks",
-  "motion"
-] as const;
+  "motion",
+] as const
 
-export type PlannedPatternGroup = (typeof plannedPatternGroups)[number];
+export type PlannedPatternGroup = (typeof plannedPatternGroups)[number]

@@ -3,6 +3,14 @@
   "compilerOptions": {
     "baseUrl": "."
   },
-  "include": [".storybook/**/*.ts", ".storybook/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.mdx"],
+  "include": [
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.mdx",
+    "../../packages/ui-react/src/**/*.ts",
+    "../../packages/ui-react/src/**/*.tsx"
+  ],
   "exclude": ["node_modules", "storybook-static"]
 }

@@ -1,5 +1,12 @@
-import nextra from "nextra";
+import path from "node:path"
+import { fileURLToPath } from "node:url"
 
-const withNextra = nextra({});
+const appDir = path.dirname(fileURLToPath(import.meta.url))
 
-export default withNextra({});
+const nextConfig = {
+  turbopack: {
+    root: path.join(appDir, "../.."),
+  },
+}
+
+export default nextConfig
