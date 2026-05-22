@@ -1,0 +1,11 @@
+{
+  "name": "@design-playground/typescript-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base": "./base.json",
+    "./next": "./next.json",
+    "./react-library": "./react-library.json"
+  }
+}
