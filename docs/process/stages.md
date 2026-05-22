@@ -1,340 +1,339 @@
-# Implementation stages and readiness criteria
+# Этапы реализации и критерии готовности
 
-This file is the working roadmap. Each stage is intentionally small enough to be assigned as a separate task without losing context.
+Этот файл — рабочая дорожная карта проекта. Каждый этап специально нарезан так, чтобы его можно было отдавать отдельной задачей без потери контекста.
 
-## Stage 0: Clean foundation
+## Этап 0: чистый фундамент
 
-Goal:
+Цель:
 
-Create a clean repository foundation and record the project contract.
+Создать чистое основание репозитория и зафиксировать проектный контракт.
 
-Scope:
+Состав работ:
 
-- remove the old Vite spike from the repository foundation;
-- create pnpm/turbo monorepo structure;
-- create placeholder apps and packages;
-- document architecture, stages, inventory sources, and token flow;
-- connect the repository to `mzhoff/design-playground.git`;
-- make the first clean commit.
+- убрать старый Vite-спайк из основы репозитория;
+- создать структуру монорепозитория на `pnpm` и `turbo`;
+- создать приложения и пакеты-заготовки;
+- задокументировать архитектуру, этапы, источники инвентаризации и токенный процесс;
+- подключить репозиторий к `mzhoff/design-playground.git`;
+- сделать первый чистый коммит.
 
-Done when:
+Критерии готовности:
 
-- root package is named `design-playground`;
-- workspace structure is clear;
-- old spike files are removed;
-- documentation explains the project goal and process;
-- the first commit exists in git.
+- корневой пакет называется `design-playground`;
+- структура workspace понятна;
+- старые файлы спайка удалены;
+- документация объясняет цель проекта и процесс работы;
+- первый коммит существует в git.
 
-Out of scope:
+Вне рамок этапа:
 
-- working Playground UI;
-- working Storybook;
-- copied components from source projects;
-- final tokens;
-- visual tests.
+- рабочий интерфейс Playground;
+- рабочий Storybook;
+- скопированные компоненты из исходных проектов;
+- финальные токены;
+- визуальные тесты.
 
-## Stage 1: Runtime scaffold
+## Этап 1: runtime-каркас
 
-Goal:
+Цель:
 
-Make the monorepo runnable without adding real design-system logic yet.
+Сделать монорепозиторий запускаемым, но пока без реальной логики дизайн-системы.
 
-Scope:
+Состав работ:
 
-- initialize `apps/playground` as a minimal Next.js app;
-- initialize `apps/docs` as a minimal documentation app, likely Nextra unless a blocker appears;
-- initialize `apps/storybook` as a Storybook app for React components;
-- make shared TypeScript config usable by all apps and packages;
-- add minimal CI-like scripts for linting, typechecking, and building the scaffold.
+- инициализировать `apps/playground` как минимальное Next.js-приложение;
+- инициализировать `apps/docs` как минимальное приложение документации, скорее всего на Nextra, если не появится блокер;
+- инициализировать `apps/storybook` как Storybook-приложение для React-компонентов;
+- сделать общий TypeScript-конфиг пригодным для всех приложений и пакетов;
+- добавить минимальные CI-подобные команды для линтинга, typecheck и сборки каркаса.
 
-Done when:
+Критерии готовности:
 
-- `pnpm install` completes;
-- `pnpm dev` can start the main development surface;
-- `pnpm --filter @gigonom/playground dev` starts the Playground shell;
-- `pnpm --filter @gigonom/docs dev` starts documentation;
-- `pnpm --filter @gigonom/storybook storybook` starts Storybook;
-- empty package imports work from at least one app.
+- `pnpm install` завершается успешно;
+- `pnpm dev` может запустить основную поверхность разработки;
+- `pnpm --filter @gigonom/playground dev` запускает оболочку Playground;
+- `pnpm --filter @gigonom/docs dev` запускает документацию;
+- `pnpm --filter @gigonom/storybook storybook` запускает Storybook;
+- пустые импорты из пакетов работают хотя бы в одном приложении.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One task for package setup and app shells. No inventory in this stage.
+Одна задача на настройку пакетов и оболочек приложений. Инвентаризацию на этом этапе не трогаем.
 
-## Stage 2: Inventory map
+## Этап 2: карта инвентаризации
 
-Goal:
+Цель:
 
-Create a clear map of what to extract from each existing project before copying code.
+Создать понятную карту того, что именно нужно вынести из каждого существующего проекта до копирования кода.
 
-Scope:
+Состав работ:
 
-- inspect source projects;
-- list candidate vertical kits and components;
-- mark dependencies and project-specific coupling;
-- assign each item to a target package and Storybook hierarchy;
-- decide copy order.
+- изучить исходные проекты;
+- перечислить кандидатов на вертикальные наборы и компоненты;
+- отметить зависимости и привязки к логике конкретного проекта;
+- назначить каждому элементу целевой пакет и место в иерархии Storybook;
+- определить порядок копирования.
 
-Source projects:
+Исходные проекты:
 
-- `REVERIE app`: charts;
-- `prodSQL`: canvas and layout;
-- `security-sphere`: admin navigation, editors, text work, site components;
-- `gigonom-2026`: first consumer and validation target.
+- `REVERIE app`: графики;
+- `prodSQL`: канвас и layout;
+- `security-sphere`: админская навигация, редакторы, работа с текстом, компоненты сайта;
+- `gigonom-2026`: первый потребитель и среда проверки.
 
-Done when:
+Критерии готовности:
 
-- `docs/inventory/*.md` contains a structured list of candidates;
-- every candidate has source path, target package, expected risk, and extraction priority;
-- no source code has been copied blindly without an inventory note.
+- в `docs/inventory/*.md` есть структурированный список кандидатов;
+- у каждого кандидата есть путь к исходнику, целевой пакет, ожидаемый риск и приоритет выноса;
+- исходный код не копируется вслепую без записи в инвентаризации.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One source project per task, or one vertical domain per task if the source is large.
+Один исходный проект на задачу или один вертикальный домен на задачу, если проект большой.
 
-## Stage 3: Raw vertical kit import
+## Этап 3: сырой импорт вертикальных наборов
 
-Goal:
+Цель:
 
-Bring working vertical slices into the monorepo with minimal behavior changes.
+Перенести рабочие вертикальные срезы в монорепозиторий с минимальными изменениями поведения.
 
-Scope:
+Состав работ:
 
-- copy selected raw components;
-- isolate them from project-specific routing, data fetching, and environment assumptions;
-- keep behavior close to source;
-- add simple Storybook stories for visual inspection;
-- mark known technical debt directly in inventory docs.
+- скопировать выбранные сырьевые компоненты;
+- изолировать их от проектного роутинга, data fetching и assumptions окружения;
+- сохранить поведение близким к исходному;
+- добавить простые Storybook-истории для визуального осмотра;
+- зафиксировать известный технический долг прямо в документах инвентаризации.
 
-Initial vertical kits:
+Начальные вертикальные наборы:
 
-- chat assistant;
-- canvas toolkit;
-- chart components;
-- admin sidebar and navigation;
-- rich text and editor blocks;
-- website content blocks and animations.
+- чат-ассистент;
+- набор для канваса;
+- компоненты графиков;
+- боковая навигация и админское меню;
+- rich text и editor-блоки;
+- контентные блоки сайта и анимации.
 
-Done when:
+Критерии готовности:
 
-- copied components render in Storybook or Playground;
-- project-specific dependencies are either removed or explicitly documented;
-- each imported kit has a short README explaining origin and current limitations;
-- no final abstraction is forced before visual comparison.
+- скопированные компоненты рендерятся в Storybook или Playground;
+- проектные зависимости удалены или явно задокументированы;
+- у каждого импортированного набора есть короткий README с происхождением и текущими ограничениями;
+- финальная абстракция не навязывается до визуального сравнения.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One vertical kit per task.
+Один вертикальный набор на задачу.
 
-## Stage 4: Figma snapshot and design review
+## Этап 4: слепок в Figma и дизайн-ревью
 
-Goal:
+Цель:
 
-Turn raw working components into design-review material.
+Превратить сырые рабочие компоненты в материал для дизайн-ревью.
 
-Scope:
+Состав работ:
 
-- render imported kits in stable states;
-- create Figma snapshots or equivalent frames;
-- compare duplicates and overlapping components;
-- let the designer standardize and approve final structure;
-- record approved node links.
+- отрендерить импортированные наборы в стабильных состояниях;
+- создать слепки в Figma или эквивалентные фреймы;
+- сравнить дублирующиеся и пересекающиеся компоненты;
+- дать дизайнеру стандартизировать и утвердить финальную структуру;
+- зафиксировать ссылки на утвержденные узлы Figma.
 
-Done when:
+Критерии готовности:
 
-- every reviewed component has an approved Figma reference;
-- rejected or merged components are documented;
-- final variants and states are listed;
-- implementation can be done from Figma without guessing.
+- у каждого ревьюнутого компонента есть утвержденная ссылка на Figma;
+- отклоненные или объединенные компоненты задокументированы;
+- финальные варианты и состояния перечислены;
+- реализацию можно делать по Figma без догадок.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One vertical kit or one component family per task.
+Один вертикальный набор или одно семейство компонентов на задачу.
 
-## Stage 5: Foundations and token contract
+## Этап 5: foundations и токенный контракт
 
-Goal:
+Цель:
 
-Define the stable design-token layers used by final components.
+Определить стабильные слои дизайн-токенов, на которые будут опираться финальные компоненты.
 
-Scope:
+Состав работ:
 
-- foundation color scales;
-- semantic color mappings;
-- typography scales and font configuration;
-- spacing rhythm;
-- radii;
-- borders;
-- shadows;
-- motion presets;
-- component token naming.
+- базовые цветовые шкалы;
+- семантические цветовые связи;
+- типографические шкалы и настройки шрифтов;
+- ритм отступов;
+- радиусы;
+- обводки;
+- тени;
+- пресеты анимаций;
+- нейминг компонентных токенов.
 
-Done when:
+Критерии готовности:
 
-- token names are stable enough for consumers;
-- token output can generate CSS variables;
-- at least one theme preset works in Playground and Storybook;
-- token decisions are documented in Russian for the team.
+- имена токенов достаточно стабильны для проектов-потребителей;
+- выход токенов может генерировать CSS-переменные;
+- хотя бы один пресет темы работает в Playground и Storybook;
+- токенные решения задокументированы на русском языке для команды.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One token layer per task.
+Один слой токенов на задачу.
 
-## Stage 6: Standardized component implementation
+## Этап 6: стандартизированная реализация компонентов
 
-Goal:
+Цель:
 
-Rebuild approved components against the stable token contract.
+Пересобрать утвержденные компоненты поверх стабильного токенного контракта.
 
-Scope:
+Состав работ:
 
-- implement primitives and components from approved Figma;
-- use Radix UI where it gives accessible structure;
-- keep shadcn/ui-compatible semantics when useful;
-- avoid hidden project-specific assumptions;
-- expose stable props contracts;
-- document UX rules and technical usage.
+- реализовать примитивы и компоненты по утвержденной Figma;
+- использовать Radix UI там, где он дает доступную структуру;
+- сохранять shadcn/ui-совместимую семантику там, где это полезно;
+- избегать скрытых assumptions конкретного проекта;
+- открыть стабильные контракты props;
+- задокументировать UX-правила и техническое использование.
 
-Done when:
+Критерии готовности:
 
-- component has final React implementation;
-- component has Storybook stories for variants and states;
-- component has docs page;
-- component uses semantic tokens, not hardcoded project colors;
-- component can be consumed by a Next.js app.
+- у компонента есть финальная React-реализация;
+- у компонента есть Storybook-истории для вариантов и состояний;
+- у компонента есть страница документации;
+- компонент использует семантические токены, а не hardcoded цвета проекта;
+- компонент можно использовать в Next.js-приложении.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One component family per task.
+Одно семейство компонентов на задачу.
 
-## Stage 7: Playground configurator
+## Этап 7: конфигуратор Playground
 
-Goal:
+Цель:
 
-Make the Playground useful for configuring and previewing project styles.
+Сделать Playground полезным для настройки и предпросмотра стиля проекта.
 
-Scope:
+Состав работ:
 
-- token editor UI;
-- theme preset management;
-- live preview across primitives and vertical kits;
-- export to CSS variables and package-consumable config;
-- import existing preset;
-- client-friendly preview mode.
+- UI редактора токенов;
+- управление пресетами тем;
+- живой предпросмотр на примитивах и вертикальных наборах;
+- экспорт в CSS-переменные и конфиг, пригодный для пакетов;
+- импорт существующего пресета;
+- клиентский режим предпросмотра.
 
-Done when:
+Критерии готовности:
 
-- a user can change allowed visual settings without editing code;
-- changes affect real components;
-- exported preset can be applied back to the Playground;
-- preset format is documented;
-- invalid token values are blocked or clearly reported.
+- пользователь может менять разрешенные визуальные настройки без редактирования кода;
+- изменения влияют на реальные компоненты;
+- экспортированный пресет можно применить обратно в Playground;
+- формат пресета задокументирован;
+- недопустимые значения токенов блокируются или понятно объясняются.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One editor area per task: colors, typography, spacing, motion, export.
+Одна область редактора на задачу: цвета, типографика, отступы, анимации, экспорт.
 
-## Stage 8: Consumer integration
+## Этап 8: интеграция с потребителем
 
-Goal:
+Цель:
 
-Prove the system in a real product.
+Доказать работу системы в реальном продукте.
 
-First consumer:
+Первый потребитель:
 
 - `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`
 
-Scope:
+Состав работ:
 
-- connect local package consumption;
-- apply generated tokens;
-- replace selected website blocks or primitives;
-- document integration gaps;
-- measure whether reuse is actually faster than project-local implementation.
+- подключить локальное потребление пакетов;
+- применить сгенерированные токены;
+- заменить выбранные блоки сайта или примитивы;
+- задокументировать проблемы интеграции;
+- оценить, действительно ли переиспользование быстрее локальной реализации в проекте.
 
-Done when:
+Критерии готовности:
 
-- Gigonom 2026 consumes at least one package from the design system;
-- tokens are applied without manual duplication;
-- integration instructions are documented;
-- missing capabilities are tracked as backlog.
+- Gigonom 2026 использует хотя бы один пакет дизайн-системы;
+- токены применяются без ручного дублирования;
+- инструкция по интеграции задокументирована;
+- недостающие возможности вынесены в backlog.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One page or one block family per task.
+Одна страница или одно семейство блоков на задачу.
 
-## Stage 9: Quality gates
+## Этап 9: quality gates
 
-Goal:
+Цель:
 
-Turn the repository into a reliable internal product.
+Превратить репозиторий в надежный внутренний продукт.
 
-Scope:
+Состав работ:
 
-- Storybook interaction tests;
-- visual regression tests with Playwright;
-- accessibility checks;
-- package build checks;
-- consumer integration checks;
-- release notes discipline.
+- интерактивные тесты Storybook;
+- визуальные регрессионные тесты через Playwright;
+- проверки доступности;
+- проверки сборки пакетов;
+- проверки интеграции с потребителями;
+- дисциплина release notes.
 
-Done when:
+Критерии готовности:
 
-- visual changes are visible before merge;
-- component behavior has smoke coverage;
-- package build catches broken exports;
-- team can safely update consumers.
+- визуальные изменения видны до merge;
+- поведение компонентов покрыто smoke-проверками;
+- сборка пакетов ловит сломанные экспорты;
+- команда может безопасно обновлять потребителей.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One quality gate per task.
+Один quality gate на задачу.
 
-## Stage 10: Internal product hardening
+## Этап 10: укрепление внутреннего продукта
 
-Goal:
+Цель:
 
-Make the platform stable enough for repeated internal project use.
+Сделать платформу достаточно стабильной для повторного использования во внутренних проектах.
 
-Scope:
+Состав работ:
 
-- versioning strategy;
+- стратегия версионирования;
 - migration notes;
-- project bootstrap guide;
-- preset library;
-- contribution rules;
-- design review checklist;
-- package publishing or internal distribution.
+- инструкция старта нового проекта;
+- библиотека пресетов;
+- правила contribution;
+- чеклист дизайн-ревью;
+- публикация пакетов или внутренний способ доставки.
 
-Done when:
+Критерии готовности:
 
-- a new internal project can start from documented steps;
-- manager/designer can create a theme preset;
-- developer can install and use packages without reverse engineering;
-- team has a repeatable update process.
+- новый внутренний проект можно стартовать по документированным шагам;
+- менеджер или дизайнер может создать пресет темы;
+- разработчик может установить и использовать пакеты без reverse engineering;
+- у команды есть повторяемый процесс обновления.
 
-Recommended task size:
+Рекомендуемый размер задачи:
 
-One operational workflow per task.
+Один операционный процесс на задачу.
 
-## Later: External product evaluation
+## Позже: оценка внешнего продукта
 
-Goal:
+Цель:
 
-Decide whether the system can become a sellable product.
+Решить, может ли система стать продаваемым продуктом.
 
-This starts only after internal usage proves value.
+Этот этап начинается только после того, как внутренняя эксплуатация докажет ценность.
 
-Possible scope:
+Возможный состав работ:
 
-- public documentation packaging;
-- client-facing preset marketplace;
-- framework adapters for React, Vue, and Angular;
-- paid onboarding flow;
-- external support model.
+- упаковка публичной документации;
+- клиентская библиотека пресетов;
+- адаптеры для React, Vue и Angular;
+- платный onboarding;
+- внешняя модель поддержки.
 
-Done when:
+Критерии готовности:
 
-- internal ROI is proven;
-- support burden is understood;
-- framework expansion cost is estimated;
-- product positioning is clear.
-
+- внутренняя окупаемость доказана;
+- понятна нагрузка поддержки;
+- оценена стоимость расширения на другие фреймворки;
+- ясно продуктовое позиционирование.

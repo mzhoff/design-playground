@@ -1,121 +1,121 @@
-# Inventory sources
+# Источники для инвентаризации
 
-This file records where existing UI work lives and what we expect to extract.
+Этот файл фиксирует, где лежит уже сделанная UI-работа и что мы ожидаем оттуда вынести.
 
-## Inventory rule
+## Правило инвентаризации
 
-Do not redesign during the first copy pass.
+Во время первого прохода не редизайним компоненты.
 
-The first pass is for collecting working material. Standardization happens after comparison, Figma review, and token planning.
+Первый проход нужен, чтобы собрать рабочий материал. Стандартизация начинается после сравнения, ревью в Figma и планирования токенов.
 
-Each imported item should eventually record:
+У каждого импортированного элемента позже должны быть зафиксированы:
 
-- source project;
-- source path;
-- target package;
-- target Storybook group;
-- dependencies;
-- project-specific coupling;
-- extraction risk;
-- design status;
-- implementation status.
+- исходный проект;
+- путь к исходному коду;
+- целевой пакет;
+- целевая группа в Storybook;
+- зависимости;
+- связка с логикой конкретного проекта;
+- риск выноса;
+- статус дизайна;
+- статус реализации.
 
-## Source: REVERIE app
+## Источник: REVERIE app
 
-Path:
+Путь:
 
 `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/REVERIE app/Repos`
 
-Expected inventory:
+Ожидаемая инвентаризация:
 
-- chart components;
-- chart cards;
-- chart legends;
-- chart tooltips;
-- data visualization wrappers;
-- analytical dashboard patterns.
+- компоненты графиков;
+- карточки с графиками;
+- легенды графиков;
+- подсказки графиков;
+- обертки для визуализации данных;
+- аналитические дашборд-паттерны.
 
-Target package candidates:
+Кандидаты в целевые пакеты:
 
 - `packages/patterns`;
 - `packages/ui-react`;
-- `packages/tokens` for chart color semantics.
+- `packages/tokens` для семантики цветов графиков.
 
-Target Storybook groups:
+Целевые группы Storybook:
 
 - `Charts`;
 - `Dashboards`;
 - `Data Display`.
 
-Known risks:
+Известные риски:
 
-- data formatting may be coupled to product-specific models;
-- chart libraries may impose bundle and theme constraints;
-- chart colors must be mapped to semantic chart tokens.
+- форматирование данных может быть связано с моделями конкретного продукта;
+- библиотеки графиков могут накладывать ограничения на сборку и тему;
+- цвета графиков нужно будет перевести в семантические токены графиков.
 
-## Source: prodSQL
+## Источник: prodSQL
 
-Path:
+Путь:
 
 `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/prodSQL/Repos`
 
-Expected inventory:
+Ожидаемая инвентаризация:
 
-- canvas components;
-- layout panels;
-- canvas cards;
-- floating menus;
-- context menus;
-- node or block controls;
-- modal windows;
-- side panels;
-- toolbar patterns.
+- компоненты канваса;
+- layout-панели;
+- карточки канваса;
+- плавающие меню;
+- контекстные меню;
+- элементы управления нодами или блоками;
+- модальные окна;
+- боковые панели;
+- паттерны тулбаров.
 
-Target package candidates:
+Кандидаты в целевые пакеты:
 
 - `packages/patterns`;
 - `packages/ui-react`;
 - `packages/icons`.
 
-Target Storybook groups:
+Целевые группы Storybook:
 
 - `Canvas`;
 - `Navigation`;
 - `Overlays`;
 - `Toolbars`.
 
-Known risks:
+Известные риски:
 
-- canvas logic may be tightly coupled to product state;
-- drag and selection behavior must be separated from visual shell;
-- keyboard interactions need accessibility review.
+- логика канваса может быть сильно связана с состоянием конкретного продукта;
+- поведение перетаскивания и выделения нужно отделить от визуальной оболочки;
+- клавиатурные взаимодействия потребуют отдельной проверки доступности.
 
-## Source: Security Sphere
+## Источник: Security Sphere
 
-Path:
+Путь:
 
 `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/SecurityShere/Repos/security-sphere`
 
-Expected inventory:
+Ожидаемая инвентаризация:
 
-- admin side navigation;
-- menu patterns;
-- WYSIWYG editors;
-- text fields and content editing flows;
-- field blocks;
-- website cards;
-- website sections;
-- animated content blocks.
+- боковая навигация админки;
+- паттерны меню;
+- WYSIWYG-редакторы;
+- текстовые поля и сценарии редактирования контента;
+- блоки полей;
+- карточки сайта;
+- секции сайта;
+- анимированные контентные блоки.
 
-Target package candidates:
+Кандидаты в целевые пакеты:
 
 - `packages/ui-react`;
 - `packages/patterns`;
 - `packages/tokens`;
-- `apps/docs` as reference documentation structure;
-- `apps/playground` as reference Next.js runtime structure.
+- `apps/docs` как референс структуры документации;
+- `apps/playground` как референс Next.js runtime-структуры.
 
-Target Storybook groups:
+Целевые группы Storybook:
 
 - `Admin`;
 - `Navigation`;
@@ -125,80 +125,79 @@ Target Storybook groups:
 - `Website Blocks`;
 - `Motion`.
 
-Known risks:
+Известные риски:
 
-- this is a reference architecture, so copying structure is useful;
-- product-specific naming must be removed;
-- some components may be visually good but too coupled to current content.
+- проект полезен как архитектурный референс, поэтому часть структуры можно копировать;
+- продуктовые названия и контекст нужно будет удалить;
+- часть компонентов может быть визуально сильной, но слишком привязанной к текущему контенту.
 
-## Source: Gigonom 2026
+## Источник: Gigonom 2026
 
-Path:
+Путь:
 
 `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`
 
-Expected inventory:
+Ожидаемая инвентаризация:
 
-- first consumer integration points;
-- website typography reference;
-- content blocks;
-- motion patterns;
-- final validation environment.
+- точки первой интеграции потребителя;
+- референс типографики сайта;
+- контентные блоки;
+- анимационные паттерны;
+- среда финальной проверки.
 
-Target package candidates:
+Кандидаты в целевые пакеты:
 
-- consumer app, not primary source package;
-- `packages/patterns` only when a block should become reusable.
+- это в первую очередь приложение-потребитель, а не источник пакета;
+- `packages/patterns` только для блоков, которые действительно должны стать переиспользуемыми.
 
-Target Storybook groups:
+Целевые группы Storybook:
 
 - `Website Blocks`;
 - `Typography`;
 - `Motion`.
 
-Known risks:
+Известные риски:
 
-- as first consumer, it may reveal missing APIs;
-- avoid overfitting the design system to one website.
+- как первый потребитель проект покажет недостающие API;
+- нельзя переадаптировать дизайн-систему только под один сайт.
 
-## Source: Figma Gigonom UI
+## Источник: Figma Gigonom UI
 
-URL:
+Ссылка:
 
 `https://www.figma.com/design/bGfbfe3HaUmCfos86ULlFY/Gigonom-UI?node-id=429-38730&t=UyydRjwyXfB4c7Sy-1`
 
-Known structure:
+Известная структура:
 
-- page: `Assets`;
-- large icon library area: `Lucide`;
-- important node: `429:38730`, chat assistant section.
+- страница: `Assets`;
+- большая область библиотеки иконок: `Lucide`;
+- важный узел: `429:38730`, секция чат-ассистента.
 
-Expected inventory:
+Ожидаемая инвентаризация:
 
-- chat assistant components;
-- assistant onboarding;
-- answer variants;
-- context questions;
-- assistant settings panels;
-- icon assets;
-- design decisions already present in frames.
+- компоненты чат-ассистента;
+- onboarding ассистента;
+- варианты ответов;
+- контекстные вопросы;
+- панели настроек ассистента;
+- иконки;
+- дизайн-решения, уже заложенные во фреймах.
 
-Target package candidates:
+Кандидаты в целевые пакеты:
 
 - `packages/patterns`;
 - `packages/ui-react`;
 - `packages/icons`.
 
-Target Storybook groups:
+Целевые группы Storybook:
 
 - `Chat Assistant`;
 - `Forms`;
 - `Navigation`;
 - `Icons`.
 
-Known risks:
+Известные риски:
 
-- Figma file is large;
-- inventory should inspect focused nodes rather than pulling everything at once;
-- final implementation must use approved Figma nodes, not inferred screenshots.
-
+- файл Figma большой;
+- инвентаризацию нужно делать по сфокусированным узлам, а не пытаться вытащить все сразу;
+- финальная реализация должна опираться на утвержденные узлы Figma, а не на догадки по скриншотам.

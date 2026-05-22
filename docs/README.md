@@ -1,24 +1,23 @@
-# Design Playground documentation
+# Документация Design Playground
 
-Start here:
+Начинать отсюда:
 
-- `docs/rfc/000-design-system-platform.md`: accepted product and architecture contract;
-- `docs/process/stages.md`: staged roadmap and readiness criteria;
-- `docs/process/task-slicing.md`: how to split future tasks;
-- `docs/process/figma-token-workflow.md`: Figma and token synchronization direction;
-- `docs/inventory/sources.md`: source projects and expected extraction areas.
+- `docs/rfc/000-design-system-platform.md`: принятый продуктовый и архитектурный контракт;
+- `docs/process/stages.md`: этапы проекта и критерии готовности;
+- `docs/process/task-slicing.md`: правила нарезки будущих задач;
+- `docs/process/figma-token-workflow.md`: направление работы Figma и токенов;
+- `docs/inventory/sources.md`: исходные проекты и зоны, из которых будем вытаскивать компоненты.
 
-## Practical meaning
+## Практический смысл
 
-This documentation is the control panel for the project.
+Эта документация — панель управления проектом.
 
-For future work, pick one stage from `docs/process/stages.md`, then create or execute a task small enough to match `docs/process/task-slicing.md`.
+Для будущей работы нужно выбрать этап из `docs/process/stages.md`, затем поставить задачу такого размера, чтобы она соответствовала правилам из `docs/process/task-slicing.md`.
 
-## Current status
+## Текущий статус
 
-Current stage:
+Текущий этап:
 
-`Stage 0: Clean foundation`
+`Этап 0: чистый фундамент`.
 
-The repository is intentionally not a working design-system product yet. It is a clean foundation for the next implementation tasks.
-
+Репозиторий пока намеренно не является готовым продуктом дизайн-системы. Сейчас это чистый фундамент для следующих задач реализации.

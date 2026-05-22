@@ -1,183 +1,182 @@
-# Figma and token workflow
+# Процесс работы Figma и токенов
 
-## Purpose
+## Назначение
 
-The system must keep design and implementation connected through an explicit token contract.
+Система должна связывать дизайн и реализацию через явный контракт дизайн-токенов.
 
-The desired end state:
+Желаемое итоговое состояние:
 
-- manager or designer configures a project style in Playground;
-- the style is exported as tokens and presets;
-- tokens can be synchronized with Figma;
-- developers consume the same token contract in code;
-- client projects do not manually duplicate style decisions.
+- менеджер или дизайнер настраивает стиль проекта в Playground;
+- стиль экспортируется как токены и пресеты;
+- токены можно синхронизировать с Figma;
+- разработчики используют тот же токенный контракт в коде;
+- клиентские проекты не дублируют стилевые решения вручную.
 
-## Current phase
+## Текущая фаза
 
-At the beginning, we do not need perfect automation.
+В начале нам не нужна идеальная автоматизация.
 
-The first goal is to make the contract explicit:
+Первая цель — сделать контракт явным:
 
-- which tokens exist;
-- which tokens are editable;
-- which tokens are semantic and stable;
-- which tokens are component-specific;
-- how a preset is exported;
-- how a consumer project applies the preset.
+- какие токены существуют;
+- какие токены можно редактировать;
+- какие токены являются семантическими и стабильными;
+- какие токены относятся к конкретным компонентам;
+- как экспортируется пресет;
+- как приложение-потребитель применяет пресет.
 
-## Design authority flow
+## Поток дизайн-авторитета
 
-Raw code is not the final design authority.
+Сырой код не является финальным источником правды по дизайну.
 
-The authority flow is:
+Источник правды формируется так:
 
-1. Existing projects provide raw working components.
-2. Playground and Storybook expose them in one place.
-3. Figma receives snapshots or reconstructed frames.
-4. Designer standardizes and approves variants.
-5. Code implements approved Figma with stable tokens.
-6. Tokens are exported back to consuming projects.
+1. Существующие проекты дают рабочие сырьевые компоненты.
+2. Playground и Storybook показывают их в одном месте.
+3. В Figma создаются слепки или пересобранные фреймы.
+4. Дизайнер стандартизирует и утверждает варианты.
+5. Код реализует утвержденную Figma через стабильные токены.
+6. Токены экспортируются обратно в проекты-потребители.
 
-## Token Studio direction
+## Направление Token Studio
 
-Token Studio or an equivalent token workflow may be used to synchronize Figma and repository tokens.
+Token Studio или похожий процесс можно использовать для синхронизации токенов Figma и репозитория.
 
-Expected future flow:
+Ожидаемый будущий процесс:
 
-1. Create or edit theme preset in Playground.
-2. Export token JSON.
-3. Sync token JSON to Figma through Token Studio or a compatible workflow.
-4. Apply tokens to approved Figma components.
-5. Commit the same token source into the repository.
-6. Compile CSS variables and package outputs for the consumer project.
+1. Создать или отредактировать пресет темы в Playground.
+2. Экспортировать JSON с токенами.
+3. Синхронизировать JSON с Figma через Token Studio или совместимый процесс.
+4. Применить токены к утвержденным компонентам Figma.
+5. Закоммитить тот же источник токенов в репозиторий.
+6. Скомпилировать CSS-переменные и выходные файлы пакетов для проекта-потребителя.
 
-This workflow must be proven with one internal consumer before becoming mandatory for all projects.
+Этот процесс должен быть доказан на одном внутреннем потребителе до того, как станет обязательным для всех проектов.
 
-## Editable token categories
+## Категории редактируемых токенов
 
-Allowed for Playground editing:
+Разрешено редактировать в Playground:
 
-- base color scales;
-- semantic color mappings;
-- typography family;
-- typography scale;
-- line heights;
-- letter spacing;
-- spacing rhythm;
-- radii;
-- border widths;
-- shadows;
-- motion preset;
-- icon set;
-- image and illustration set references.
+- базовые цветовые шкалы;
+- семантические цветовые связи;
+- шрифтовую гарнитуру;
+- типографическую шкалу;
+- межстрочные интервалы;
+- межбуквенные интервалы;
+- ритм отступов;
+- радиусы;
+- толщины обводок;
+- тени;
+- анимационный пресет;
+- набор иконок;
+- ссылки на наборы изображений и иллюстраций.
 
-Restricted or controlled:
+Ограничено или контролируется системой:
 
-- component structural layout;
-- accessibility states;
-- focus behavior;
-- keyboard interaction;
-- required contrast rules;
-- required component anatomy;
-- data integration contracts.
+- структурная компоновка компонентов;
+- состояния доступности;
+- поведение фокуса;
+- клавиатурные взаимодействия;
+- обязательные правила контраста;
+- обязательная анатомия компонента;
+- контракты интеграции данных.
 
-## Color model
+## Цветовая модель
 
-The color model has two levels.
+Цветовая модель состоит из двух уровней.
 
-Base palette:
+Базовая палитра:
 
-- neutral;
-- brand;
-- accent;
-- success;
-- warning;
-- destructive;
-- chart palettes;
-- custom generated scales.
+- нейтральная шкала;
+- брендовая шкала;
+- акцентная шкала;
+- успех;
+- предупреждение;
+- разрушительное или опасное действие;
+- палитры графиков;
+- пользовательские сгенерированные шкалы.
 
-Semantic layer:
+Семантический слой:
 
-- background;
-- foreground;
-- surface;
-- card;
-- muted;
-- primary;
-- secondary;
-- accent;
-- destructive;
-- warning;
-- success;
-- border;
-- input;
-- ring;
-- chart series.
+- фон;
+- основной текст;
+- поверхность;
+- карточка;
+- приглушенный слой;
+- основной акцент;
+- вторичный акцент;
+- дополнительный акцент;
+- опасное действие;
+- предупреждение;
+- успех;
+- обводка;
+- поле ввода;
+- кольцо фокуса;
+- серии графиков.
 
-The Playground should eventually support richer scale generation than fixed shadcn/ui presets, including controlled curve-based generation for neutral and brand scales.
+Playground должен в будущем поддерживать более богатую генерацию шкал, чем фиксированные пресеты shadcn/ui. Особенно важно управлять кривыми генерации для нейтральных и брендовых шкал.
 
-## Typography model
+## Типографическая модель
 
-Typography is project-specific but contract-driven.
+Типографика зависит от проекта, но должна управляться контрактом.
 
-Editable:
+Редактируется:
 
-- font family;
-- base font size;
-- type scale;
-- heading scale;
-- line-height ratios;
-- paragraph spacing;
-- letter spacing;
-- font weights;
-- mono font where needed.
+- шрифтовая гарнитура;
+- базовый размер шрифта;
+- типографическая шкала;
+- шкала заголовков;
+- коэффициенты межстрочного интервала;
+- отступы между абзацами;
+- межбуквенные интервалы;
+- насыщенности шрифта;
+- моноширинный шрифт там, где он нужен.
 
-Stable:
+Стабильно:
 
-- semantic text roles;
-- heading hierarchy;
-- label and helper text roles;
-- error text roles;
-- code text roles.
+- семантические роли текста;
+- иерархия заголовков;
+- роли подписи и вспомогательного текста;
+- роли текста ошибки;
+- роли текста кода.
 
-## Motion model
+## Модель анимаций
 
-Motion should use presets instead of arbitrary per-component animation.
+Анимации должны задаваться пресетами, а не произвольными настройками в каждом компоненте.
 
-Example preset groups:
+Примеры групп пресетов:
 
-- minimal;
-- precise;
-- expressive;
-- editorial;
-- dense SaaS.
+- минимальный;
+- точный;
+- выразительный;
+- редакционный;
+- плотный SaaS-интерфейс.
 
-Each preset should define:
+Каждый пресет должен определять:
 
-- duration scale;
-- easing;
-- entrance behavior;
-- exit behavior;
-- hover behavior;
-- reduced-motion fallback.
+- шкалу длительностей;
+- easing-кривые;
+- поведение появления;
+- поведение исчезновения;
+- поведение при наведении;
+- fallback для режима уменьшенного движения.
 
-## Preset export
+## Экспорт пресета
 
-A project preset should eventually export:
+Проектный пресет в будущем должен экспортировать:
 
-- token JSON;
-- CSS variables;
-- TypeScript theme object;
-- optional Tailwind-compatible mapping;
-- metadata such as preset name, version, author, and date.
+- JSON с токенами;
+- CSS-переменные;
+- TypeScript-объект темы;
+- опциональную мапу, совместимую с Tailwind;
+- метаданные: имя пресета, версию, автора и дату.
 
-## Readiness criteria for the first token milestone
+## Критерии готовности первого токенного milestone
 
-The first token milestone is ready when:
+Первый токенный milestone готов, когда:
 
-- one theme preset exists as token JSON;
-- token compiler can produce CSS variables;
-- Playground can switch to the preset;
-- Storybook can render components with the preset;
-- one consumer can apply the preset without manual token duplication.
-
+- существует один пресет темы в виде JSON с токенами;
+- компилятор токенов может создать CSS-переменные;
+- Playground может переключиться на этот пресет;
+- Storybook может отрисовать компоненты с этим пресетом;
+- один потребитель может применить пресет без ручного дублирования токенов.

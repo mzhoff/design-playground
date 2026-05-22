@@ -1,166 +1,190 @@
-# RFC 000: Design Playground as internal design-system platform
+# RFC 000: Design Playground как внутренняя платформа дизайн-системы
 
-## Status
+## Статус
 
-Accepted for implementation.
+Принято к реализации.
 
-## Purpose
+## Назначение
 
-Design Playground is an internal platform for building, configuring, documenting, and validating the Gigonom design system.
+Design Playground — внутренняя платформа для сборки, настройки, документации и проверки дизайн-системы Gigonom.
 
-The product must solve four practical tasks:
+Продукт должен решить четыре практические задачи:
 
-1. Collect proven UI work from existing projects into one controlled monorepo.
-2. Standardize the collected components without losing useful visual individuality.
-3. Let the team configure visual style through tokens and presets before starting a client project.
-4. Export a stable React/Next.js component package and token contract back into real projects.
+1. Собрать проверенные UI-наработки из существующих проектов в один контролируемый монорепозиторий.
+2. Стандартизировать собранные компоненты без потери полезной визуальной индивидуальности.
+3. Дать команде возможность настраивать визуальный стиль через токены и пресеты перед стартом клиентского проекта.
+4. Экспортировать стабильный пакет React/Next.js-компонентов и токенный контракт обратно в реальные проекты.
 
-The first target is internal use. External product packaging is out of scope until the design system proves that it saves time and reduces delivery risk inside Gigonom projects.
+Первый целевой сценарий — внутреннее использование. Внешняя продуктовая упаковка не входит в ближайший объем работ, пока дизайн-система не докажет, что экономит время и снижает риски внутри проектов Gigonom.
 
-## Product principles
+## Продуктовые принципы
 
-The system separates structure from style.
+Система разделяет структуру и стиль.
 
-Structure is strict:
+Структура должна быть жесткой:
 
-- component responsibilities;
-- interaction patterns;
-- accessibility rules;
-- props contracts;
-- data integration boundaries;
-- Storybook hierarchy;
-- documentation format.
+- ответственность компонентов;
+- паттерны взаимодействия;
+- правила доступности;
+- контракты props;
+- границы интеграции данных;
+- иерархия Storybook;
+- формат документации.
 
-Style is configurable:
+Стиль должен быть настраиваемым:
 
-- color palettes;
-- semantic color mapping;
-- typography scales;
-- font families;
-- spacing rhythm;
-- radii;
-- borders;
-- icon sets;
-- illustration and image sets;
-- animation presets.
+- цветовые палитры;
+- семантическая цветовая мапа;
+- типографические шкалы;
+- шрифтовые гарнитуры;
+- ритм отступов;
+- радиусы;
+- обводки;
+- наборы иконок;
+- наборы иллюстраций и изображений;
+- пресеты анимаций.
 
-This lets us reuse the same product UX patterns across SaaS products while giving every client project a distinct visual skin.
+Такой подход позволяет переиспользовать одни и те же продуктовые UX-паттерны в разных SaaS-продуктах, но давать каждому клиентскому проекту свой визуальный характер.
 
-## Technical baseline
+## Техническая база
 
-The primary runtime target is Next.js.
+Основная runtime-цель — Next.js.
 
-The repository must follow the same strategic direction as the reference project:
+Репозиторий должен идти в том же стратегическом направлении, что и эталонный проект:
 
-- reference consumer: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/SecurityShere/Repos/security-sphere`;
-- first internal consumer: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`;
-- package manager: `pnpm`;
-- monorepo orchestration: `turbo`;
-- frontend baseline: `Next.js`, `React`, TypeScript;
-- UI base: Radix UI and shadcn/ui-compatible semantics where useful;
-- package output: reusable React/Next-compatible packages first;
-- future output: React, Vue, Angular adapters only after internal stabilization.
+- референсный потребитель: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/SecurityShere/Repos/security-sphere`;
+- первый внутренний потребитель: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`;
+- пакетный менеджер: `pnpm`;
+- оркестрация монорепозитория: `turbo`;
+- frontend-база: `Next.js`, `React`, TypeScript;
+- UI-база: Radix UI и shadcn/ui-совместимая семантика там, где это полезно;
+- первый выход пакетов: переиспользуемые React/Next.js-совместимые пакеты;
+- будущий выход: адаптеры React, Vue и Angular только после внутренней стабилизации.
 
-Nest.js API integration is not part of this repository, but components must not be tightly coupled to a specific backend implementation.
+Интеграция с Nest.js API не является частью этого репозитория, но компоненты не должны быть жестко связаны с конкретной backend-реализацией.
 
-## Repository role
+## Feature-Sliced Design как принцип нарезки
 
-This repository is not just a component package.
+В проектах заказной разработки команда работает по принципам Feature-Sliced Design.
 
-It contains:
+Дизайн-система должна учитывать это не только на уровне папок, но и на уровне мышления о компонентах. Компоненты, паттерны и продуктовые блоки нужно проектировать так, чтобы они естественно раскладывались по слоям и задачам FSD.
 
-- `apps/playground`: visual configurator for tokens, themes, presets, and client-ready style exports;
-- `apps/docs`: human-facing documentation for the team and future clients;
-- `apps/storybook`: technical component documentation, interactive states, props, QA, and visual tests;
-- `packages/tokens`: design-token source contract;
-- `packages/theme-compiler`: token compilation and export pipeline;
-- `packages/ui-react`: standardized React components;
-- `packages/patterns`: higher-level product patterns and vertical kits;
-- `packages/icons`: icon registry and adapters;
-- `packages/assets`: shared visual assets;
-- `packages/typescript-config`: shared TypeScript configuration.
+Практическое правило:
 
-## Documentation strategy
+- `shared`: низкоуровневые UI-примитивы, токены, иконки, утилиты и компоненты без знания бизнес-сценариев;
+- `entities`: компоненты, связанные с устойчивыми предметными сущностями, если они появляются в нескольких сценариях;
+- `features`: интерактивные сценарии пользователя, например отправка сообщения, фильтрация, выбор периода, управление настройкой;
+- `widgets`: собранные интерфейсные блоки, которые решают цель на уровне части экрана, например sidebar, chat panel, chart card group, editor toolbar;
+- `pages`: композиция экранов в конкретном приложении-потребителе, а не зона ответственности дизайн-системы.
 
-Documentation is split into three layers.
+Для дизайн-системы это означает:
 
-Product documentation:
+- примитивы не должны знать о бизнес-логике проекта;
+- вертикальные наборы можно временно импортировать целиком, но после ревью их нужно разложить на переиспользуемые слои;
+- продуктовые блоки должны иметь понятную границу ответственности и не превращаться в неразделимые монолиты;
+- Storybook должен показывать не только атомы, но и FSD-уровни: primitives, widgets, features и вертикальные наборы;
+- Playground должен демонстрировать стиль на реальных продуктовых блоках, но сами блоки должны оставаться переносимыми между проектами.
 
-Explains why a component or pattern exists, when to use it, and what UX rules apply. The reference style is Rostelecom design documentation:
+Feature-Sliced Design не отменяет дизайн-токены и компонентную архитектуру. Он задает дополнительное правило: любой переиспользуемый UI должен быть понятно расположен по уровню ответственности.
+
+## Роль репозитория
+
+Этот репозиторий — не просто пакет компонентов.
+
+Он содержит:
+
+- `apps/playground`: визуальный конфигуратор токенов, тем, пресетов и экспортов для клиентских проектов;
+- `apps/docs`: человеко-понятная документация для команды и будущих клиентов;
+- `apps/storybook`: техническая документация компонентов, интерактивные состояния, props, QA и визуальные тесты;
+- `packages/tokens`: исходный контракт дизайн-токенов;
+- `packages/theme-compiler`: компиляция токенов и pipeline экспорта;
+- `packages/ui-react`: стандартизированные React-компоненты;
+- `packages/patterns`: продуктовые паттерны верхнего уровня и вертикальные наборы;
+- `packages/icons`: реестр иконок и адаптеры;
+- `packages/assets`: общие визуальные ассеты;
+- `packages/typescript-config`: общие TypeScript-конфиги.
+
+## Стратегия документации
+
+Документация делится на три слоя.
+
+Продуктовая документация:
+
+Объясняет, зачем существует компонент или паттерн, когда его использовать и какие UX-правила действуют. Визуальный и смысловой референс — документация дизайн-системы Ростелекома:
 
 - `https://design.rt.ru/preview`;
 - `https://design.rt.ru/gen2/components/btn/guide`.
 
-Technical documentation:
+Техническая документация:
 
-Shows imports, props, variants, states, examples, constraints, and engineering notes. The reference style is Rostelecom Storybook:
+Показывает импорты, props, варианты, состояния, примеры, ограничения и инженерные заметки. Референс технической упаковки — Storybook Ростелекома:
 
 - `https://design.rt.ru/gen2/vue-storybook/?path=/docs/components-buttons-button--docs`.
 
-Process documentation:
+Процессная документация:
 
-Explains how the team moves from raw project code to standardized design-system components.
+Объясняет, как команда проходит путь от сырого проектного кода до стандартизированных компонентов дизайн-системы.
 
-For the first implementation, documentation may use a ready documentation framework such as Nextra. A custom documentation engine is not required until we prove that a ready framework blocks the product.
+На первой реализации документация может использовать готовый фреймворк вроде Nextra. Собственный движок документации не нужен, пока мы не докажем, что готовый фреймворк мешает продукту.
 
-## Figma strategy
+## Стратегия Figma
 
-Figma is the design authority after inventory.
+После инвентаризации Figma становится дизайн-источником правды.
 
-The flow is:
+Процесс:
 
-1. Move raw working components into this repository.
-2. Render and inspect them in Playground and Storybook.
-3. Create or update Figma snapshots.
-4. Designer edits and standardizes in Figma.
-5. Implement final components pixel-perfect from approved Figma nodes.
-6. Bind final components to token contracts.
+1. Переносим сырые рабочие компоненты в этот репозиторий.
+2. Рендерим и изучаем их в Playground и Storybook.
+3. Создаем или обновляем слепки в Figma.
+4. Дизайнер редактирует и стандартизирует компоненты в Figma.
+5. Финальные компоненты реализуются pixel-perfect по утвержденным узлам Figma.
+6. Финальные компоненты связываются с токенным контрактом.
 
-Current design-system source file:
+Текущий исходный файл дизайн-системы:
 
 - `https://www.figma.com/design/bGfbfe3HaUmCfos86ULlFY/Gigonom-UI?node-id=429-38730&t=UyydRjwyXfB4c7Sy-1`
 
-Known important node:
+Известный важный узел:
 
-- `429:38730`: chat assistant area and related assistant components.
+- `429:38730`: область чат-ассистента и связанные компоненты ассистента.
 
-## Token strategy
+## Стратегия токенов
 
-Tokens are split into layers.
+Токены делятся на слои.
 
-Foundation tokens:
+Foundation-токены:
 
-- base color scales;
-- typography primitives;
-- spacing;
-- radii;
-- border widths;
-- shadows;
-- motion timings and easing;
-- icon sizing.
+- базовые цветовые шкалы;
+- типографические примитивы;
+- отступы;
+- радиусы;
+- толщины обводок;
+- тени;
+- длительности и easing анимаций;
+- размеры иконок.
 
-Semantic tokens:
+Семантические токены:
 
-- background;
-- foreground;
-- surface;
-- card;
-- border;
-- muted;
-- primary;
-- secondary;
-- accent;
-- destructive;
-- warning;
-- success;
-- chart colors;
-- focus rings;
-- text hierarchy.
+- фон;
+- основной текст;
+- поверхность;
+- карточка;
+- обводка;
+- приглушенный слой;
+- основной акцент;
+- вторичный акцент;
+- дополнительный акцент;
+- опасное действие;
+- предупреждение;
+- успех;
+- цвета графиков;
+- кольца фокуса;
+- текстовая иерархия.
 
-Component tokens:
+Компонентные токены:
 
-- button;
-- input;
+- кнопка;
+- поле ввода;
 - checkbox;
 - dialog;
 - sidebar;
@@ -170,70 +194,69 @@ Component tokens:
 - cards;
 - content blocks.
 
-The Playground must eventually allow controlled editing of allowed style attributes and export the result as a project preset.
+Playground должен в будущем позволять контролируемо редактировать разрешенные стилевые параметры и экспортировать результат как проектный пресет.
 
-## Inventory sources
+## Источники инвентаризации
 
-Code inventory starts from existing project work, not from abstract component design.
+Инвентаризация кода начинается с существующих проектных наработок, а не с абстрактного проектирования компонентов.
 
-Initial sources:
+Начальные источники:
 
-- charts: `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/REVERIE app/Repos`;
-- canvas and layout: `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/prodSQL/Repos`;
-- admin, sidebar, editors, text fields, site patterns: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/SecurityShere/Repos/security-sphere`;
-- first consumer and website pattern validation: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`.
+- графики: `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/REVERIE app/Repos`;
+- канвас и layout: `/Users/m.pyzhov/WORKSPACEs/Development/PRODaction/prodSQL/Repos`;
+- админка, sidebar, редакторы, текстовые поля, паттерны сайта: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/SecurityShere/Repos/security-sphere`;
+- первый потребитель и проверка website-паттернов: `/Users/m.pyzhov/WORKSPACEs/Development/GIGONOM/Projects/Сайт Gigonom/Repos/gigonom-2026`.
 
-## Migration strategy
+## Стратегия миграции
 
-We do not rewrite useful components line by line during inventory.
+Во время инвентаризации не переписываем полезные компоненты построчно.
 
-Inventory rule:
+Правило инвентаризации:
 
-- copy raw code when safe;
-- preserve behavior first;
-- remove project-specific dependencies second;
-- standardize tokens third;
-- redesign in Figma fourth;
-- implement final form fifth.
+- копируем сырой код, если это безопасно;
+- сначала сохраняем поведение;
+- затем убираем зависимости конкретного проекта;
+- затем стандартизируем токены;
+- затем редизайним в Figma;
+- затем реализуем финальную форму.
 
-This reduces migration errors and lets the team compare real existing solutions before forcing a shared abstraction.
+Это снижает риск ошибок миграции и позволяет команде сравнить реальные существующие решения перед тем, как создавать общую абстракцию.
 
-## First internal consumer
+## Первый внутренний потребитель
 
-The first real consumer is Gigonom 2026.
+Первый реальный потребитель — Gigonom 2026.
 
-Purpose:
+Назначение:
 
-- test the package in a real website;
-- validate token export;
-- validate documentation usefulness;
-- validate whether the system reduces implementation time;
-- discover missing primitives before using the system in client projects.
+- проверить пакет на реальном сайте;
+- проверить экспорт токенов;
+- проверить полезность документации;
+- проверить, снижает ли система время реализации;
+- найти недостающие примитивы до использования системы в клиентских проектах.
 
-## Non-goals for the first phase
+## Не входит в первую фазу
 
-The first phase does not include:
+Первая фаза не включает:
 
-- external SaaS product packaging;
-- Vue and Angular adapters;
-- marketplace-ready documentation;
-- fully automated client onboarding;
-- complete token synchronization with every consumer repository;
-- final visual language.
+- упаковку внешнего SaaS-продукта;
+- адаптеры Vue и Angular;
+- marketplace-ready документацию;
+- полностью автоматический onboarding клиента;
+- полную синхронизацию токенов с каждым репозиторием-потребителем;
+- финальный визуальный язык.
 
-These become relevant only after internal usage proves the system.
+Эти задачи становятся актуальными только после того, как внутренняя эксплуатация докажет ценность системы.
 
-## Accepted decisions
+## Принятые решения
 
-The previous Vite-based spike is discarded as implementation foundation.
+Предыдущий Vite-спайк не используется как реализационная основа.
 
-The repository is rebuilt as a clean pnpm/turbo monorepo with Next.js as the primary target.
+Репозиторий пересобирается как чистый pnpm/turbo-монорепозиторий с Next.js как основной целью.
 
-Storybook is required, but it is a technical QA and documentation surface, not the only product interface.
+Storybook обязателен, но это техническая QA- и документационная поверхность, а не единственный продуктовый интерфейс.
 
-Playground is the product interface for configuring styles and showing clients how a theme behaves across real components.
+Playground — продуктовый интерфейс для настройки стилей и демонстрации клиенту того, как тема работает на реальных компонентах.
 
-Docs are allowed to start on a ready framework to avoid wasting time on a custom documentation engine too early.
+Документация может стартовать на готовом фреймворке, чтобы не тратить время на собственный движок слишком рано.
 
-Figma remains central to design finalization. Code inventory feeds Figma; approved Figma feeds final implementation.
-
+Figma остается центральной точкой финализации дизайна. Инвентаризация кода кормит Figma, утвержденная Figma кормит финальную реализацию.

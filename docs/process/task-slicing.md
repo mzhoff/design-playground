@@ -1,97 +1,96 @@
-# Task slicing rules for future work
+# Правила нарезки задач
 
-## Why this exists
+## Зачем это нужно
 
-The design-system project has many moving parts: code inventory, Figma, tokens, documentation, Storybook, Playground, and consumer integration.
+В проекте дизайн-системы много движущихся частей: инвентаризация кода, Figma, токены, документация, Storybook, Playground и интеграция с потребителями.
 
-Tasks must be small enough that an implementation agent can keep the full local context and finish without guessing.
+Задачи должны быть достаточно маленькими, чтобы исполнитель мог удержать весь локальный контекст и закончить работу без догадок.
 
-## Default task size
+## Размер задачи по умолчанию
 
-One task should usually touch one of these units:
+Одна задача обычно должна затрагивать одну из этих единиц:
 
-- one app shell;
-- one package foundation;
-- one source project inventory;
-- one vertical kit import;
-- one component family;
-- one token layer;
-- one documentation section;
-- one consumer integration point;
-- one quality gate.
+- оболочку одного приложения;
+- фундамент одного пакета;
+- инвентаризацию одного исходного проекта;
+- импорт одного вертикального набора;
+- одно семейство компонентов;
+- один слой токенов;
+- один раздел документации;
+- одну точку интеграции с потребителем;
+- один quality gate.
 
-## Good task examples
+## Хорошие примеры задач
 
-Good:
+Хорошо:
 
-- inspect `prodSQL` and produce inventory for canvas components;
-- scaffold Storybook and render one placeholder package component;
-- import raw admin sidebar from Security Sphere without redesign;
-- define neutral color token scale and compile CSS variables;
-- implement approved Button from Figma;
-- connect Gigonom 2026 to local token CSS output.
+- изучить `prodSQL` и подготовить инвентаризацию canvas-компонентов;
+- поднять Storybook и отрендерить один placeholder-компонент из пакета;
+- импортировать сырой admin sidebar из Security Sphere без редизайна;
+- определить нейтральную цветовую шкалу токенов и скомпилировать CSS-переменные;
+- реализовать утвержденную Button по Figma;
+- подключить Gigonom 2026 к локальному CSS-выходу токенов.
 
-Too large:
+Слишком крупно:
 
-- import all components from all projects;
-- build the whole Playground;
-- standardize all primitives;
-- make the design system production-ready;
-- add visual tests everywhere.
+- импортировать все компоненты из всех проектов;
+- построить весь Playground;
+- стандартизировать все примитивы;
+- сделать дизайн-систему production-ready;
+- добавить визуальные тесты везде.
 
-## Context rule
+## Правило контекста
 
-Every task should start from a written source of truth:
+Каждая задача должна начинаться от письменного источника правды:
 
-- roadmap stage;
-- inventory note;
-- Figma node;
-- accepted RFC;
-- existing source path;
-- explicit user decision.
+- этап дорожной карты;
+- запись инвентаризации;
+- узел Figma;
+- принятый RFC;
+- существующий путь к исходнику;
+- явное решение пользователя.
 
-If there is no source of truth, the task should first produce documentation or an inventory note.
+Если источника правды нет, задача сначала должна создать документацию или запись инвентаризации.
 
-## Copy rule
+## Правило копирования
 
-During inventory imports, copy working code first and standardize later.
+Во время импорта из существующих проектов сначала копируем рабочий код и стандартизируем позже.
 
-Do not rewrite line by line if copying is safer.
+Не переписываем построчно, если безопаснее скопировать.
 
-After copying:
+После копирования:
 
-- isolate project-specific dependencies;
-- replace hardcoded styles with temporary compatibility tokens only when necessary;
-- document what remains coupled;
-- avoid final abstractions until visual comparison is done.
+- изолируем зависимости конкретного проекта;
+- заменяем hardcoded-стили временными совместимыми токенами только там, где это необходимо;
+- документируем, что осталось связанным с исходным проектом;
+- не создаем финальные абстракции до визуального сравнения.
 
-## Figma rule
+## Правило Figma
 
-Pixel-perfect implementation starts only after a Figma node is approved.
+Pixel-perfect реализация начинается только после утверждения узла Figma.
 
-Before approval, code can be rough inventory material.
+До утверждения код может быть грубым инвентаризационным материалом.
 
-After approval, implementation should follow Figma and the token contract.
+После утверждения реализация должна следовать Figma и токенному контракту.
 
-## Documentation rule
+## Правило документации
 
-Every finished component family should eventually have:
+У каждого законченного семейства компонентов позже должны быть:
 
-- product guide;
-- technical Storybook docs;
-- examples;
-- props or API notes;
-- accessibility notes;
-- token usage notes;
-- known limitations if any.
+- продуктовый guide;
+- техническая Storybook-документация;
+- примеры;
+- описание props или API;
+- заметки по доступности;
+- заметки по использованию токенов;
+- известные ограничения, если они есть.
 
-## Stop conditions
+## Условия остановки
 
-Stop and ask before continuing when:
+Нужно остановиться и спросить перед продолжением, если:
 
-- source project has unexpected uncommitted changes that block safe copying;
-- component depends on unclear business logic;
-- Figma contradicts existing implemented behavior;
-- token decision affects many components and no rule exists;
-- implementation would require creating a new local repo copy or worktree.
-
+- в исходном проекте есть неожиданные незакоммиченные изменения, которые мешают безопасному копированию;
+- компонент зависит от непонятной бизнес-логики;
+- Figma противоречит уже реализованному поведению;
+- токенное решение влияет на много компонентов, а правила еще нет;
+- реализация потребует создать новую локальную копию репозитория или git worktree.
