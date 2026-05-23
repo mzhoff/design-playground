@@ -11,7 +11,7 @@ export interface MetricTrend {
 export interface MetricCardData {
   id: string
   label: string
-  value: string
+  value: string | number
   caption: string
   tone?: AnalyticsTone
   trend?: MetricTrend
