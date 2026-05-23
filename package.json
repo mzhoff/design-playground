@@ -7,20 +7,19 @@
   "engines": {
     "node": ">=24"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "lint": "turbo run lint && pnpm run lint:root",
-    "lint:fix": "turbo run lint:fix && pnpm run lint:root:fix",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
     "lint:root": "biome check .",
     "lint:root:fix": "biome check --write .",
-    "typecheck": "turbo run typecheck",
-    "docs:check": "biome check docs README.md",
-    "prepare": "lefthook install || true"
+    "typecheck": "turbo typecheck",
+    "playground:dev": "pnpm --filter @gigonom/playground dev",
+    "docs:dev": "pnpm --filter @gigonom/docs dev",
+    "storybook": "pnpm --filter @gigonom/storybook storybook",
+    "docs:check": "sherif && pnpm lint:root",
+    "prepare": "lefthook install"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",

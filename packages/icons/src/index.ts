@@ -1,1 +1,1 @@
-export type IconSet = "lucide" | "hugeicons" | "custom"
+export const iconRegistryStatus = "planned" as const

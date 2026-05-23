@@ -4,11 +4,13 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
-      "!node_modules",
-      "!dist",
-      "!storybook-static",
-      "!.next",
-      "!coverage",
+      "!**/node_modules/**",
+      "!**/dist/**",
+      "!**/storybook-static/**",
+      "!**/.next/**",
+      "!**/.turbo/**",
+      "!**/coverage/**",
+      "!**/next-env.d.ts",
       "!pnpm-lock.yaml"
     ]
   },
