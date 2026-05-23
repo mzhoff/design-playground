@@ -30,7 +30,7 @@
 | INV-04 | Gigonom 2026 — новый date picker | Gigonom 2026 | Готово к ревью |
 | INV-05 | Gigonom 2026 — левая боковая навигация | Gigonom 2026 | Готово к ревью |
 | INV-06 | prodSQL — drag-and-drop hook | prodSQL | Готово к ревью |
-| INV-07 | prodSQL — canvas как переиспользуемый компонент | prodSQL | Запланировано |
+| INV-07 | prodSQL — canvas как переиспользуемый компонент | prodSQL | Готово к ревью |
 | INV-08 | prodSQL — layout нижних и боковых панелей | prodSQL | Запланировано |
 | INV-09 | prodSQL — dashboard cards | prodSQL | Запланировано |
 | INV-10 | ChatModule и REVERIE — сравнение чатового UI | ChatModule, REVERIE | Запланировано |
