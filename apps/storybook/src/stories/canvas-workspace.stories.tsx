@@ -1,4 +1,4 @@
-import { CanvasWorkspacePreview } from "@gigonom/patterns"
+import { CanvasWorkspacePreview } from "@design-playground/patterns"
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 const meta = {
