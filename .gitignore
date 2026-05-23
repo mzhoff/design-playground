@@ -13,3 +13,6 @@ coverage
 
 # TypeScript incremental cache
 *.tsbuildinfo
+
+# Next.js generated TypeScript environment
+next-env.d.ts
