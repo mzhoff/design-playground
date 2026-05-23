@@ -17,7 +17,7 @@ import {
   weeklyEngagementFixture,
   weeklyEngagementSeriesFixture,
 } from "@design-playground/patterns"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 const meta = {
   title: "Charts/Analytics/Raw Import",
