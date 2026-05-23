@@ -35,7 +35,7 @@
 | INV-09 | prodSQL — dashboard cards | prodSQL | Готово к ревью |
 | INV-10 | ChatModule и REVERIE — сравнение чатового UI | ChatModule, REVERIE | Готово к ревью |
 | INV-11 | REVERIE — сайт, карточки и motion-паттерны | REVERIE | Готово к ревью |
-| INV-12 | REVERIE — графики и аналитические компоненты | REVERIE | Запланировано |
+| INV-12 | REVERIE — графики и аналитические компоненты | REVERIE | Готово к ревью |
 | INV-13 | REVERIE — продуктовые интерфейсы автоматизации контент-маркетинга | REVERIE | Запланировано |
 | INV-14 | Security Sphere — эталонный стек и архитектурная совместимость | Security Sphere | Запланировано |
 | INV-15 | Security Sphere — сайт и админка как ранний UI-референс | Security Sphere | Запланировано |
