@@ -297,3 +297,30 @@ Prototype содержит compact floating panel: фиксированная п
 - Отмечены backend/orchestration зависимости.
 - Предложены целевые зоны `packages/ui-react`, `packages/patterns` и возможный `chat-core`.
 - Описаны Storybook-сценарии и mock-данные.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой vertical slice перенесен в монорепозиторий.
+
+Добавлено:
+
+- `packages/patterns/src/chat-assistant` — chat assistant raw kit;
+- generic contracts для role, mode, message, attachment, semantic block, model option, task;
+- `ChatAssistantShell` — fullscreen/page-level assistant shell;
+- `ChatComposer` — composer с attachments, command/model placeholders;
+- `ChatMessageItem` — message renderer с text, banner, card, table, tool-status и image placeholder blocks;
+- `ChatAssistantCompactPanel` — compact floating panel preview по UX-референсу REVERIE prototype;
+- `apps/storybook/src/stories/chat-assistant.stories.tsx` — Storybook-сценарий `Chat Assistant/Raw Import`.
+
+Решение по переносу:
+
+- ChatModule остается основным кодовым референсом;
+- REVERIE используется как UX-референс для page-level assistant, onboarding, task panel, feedback и compact panel;
+- streaming, SSE, persistence, voice input, feedback API, model policy, router и BFF orchestration не переносим в дизайн-системный UI.
+
+Известный технический долг:
+
+- markdown пока отображается как plain text;
+- command palette, model selector, quick replies и feedback card представлены только как placeholders;
+- resizable/docked mode не реализован, должен опираться на panel layout из `INV-08`;
+- после Figma-слепка нужно разделить `ui-react/chat`, `patterns/chat-assistant` и возможный `chat-core`.

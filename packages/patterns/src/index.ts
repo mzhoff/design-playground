@@ -22,5 +22,6 @@ export const plannedPatternGroups = [
 
 export type PlannedPatternGroup = (typeof plannedPatternGroups)[number]
 export * from "./canvas-workspace"
+export * from "./chat-assistant"
 export * from "./dashboard-cards"
 export * from "./editor-workspace"
