@@ -95,12 +95,16 @@ function ChatBlockRenderer({ block }: { block: ChatAssistantBlock }) {
     )
   }
 
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-100 p-4 text-sm text-slate-500">
-      <div className="font-semibold text-slate-700">{block.title}</div>
-      {block.description ? <div className="mt-1">{block.description}</div> : null}
-    </div>
-  )
+  if (block.type === "image") {
+    return (
+      <div className="rounded-2xl border border-slate-200 bg-slate-100 p-4 text-sm text-slate-500">
+        <div className="font-semibold text-slate-700">{block.title}</div>
+        {block.description ? <div className="mt-1">{block.description}</div> : null}
+      </div>
+    )
+  }
+
+  return null
 }
 
 export function ChatMessageItem({ message }: { message: ChatAssistantMessage }) {
