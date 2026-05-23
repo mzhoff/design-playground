@@ -21,3 +21,4 @@ export const plannedPatternGroups = [
 ] as const
 
 export type PlannedPatternGroup = (typeof plannedPatternGroups)[number]
+export * from "./canvas-workspace"
