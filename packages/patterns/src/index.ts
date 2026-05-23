@@ -1,4 +1,7 @@
+export * from "./admin-crud"
+
 export const plannedPatternGroups = [
+  "admin-crud",
   "chat-assistant",
   "canvas",
   "charts",

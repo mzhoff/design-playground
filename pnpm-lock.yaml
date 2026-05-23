@@ -127,6 +127,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@design-playground/patterns':
+        specifier: workspace:*
+        version: link:../../packages/patterns
       '@design-playground/ui-react':
         specifier: workspace:*
         version: link:../../packages/ui-react
@@ -184,10 +187,17 @@ importers:
         version: 5.9.3
 
   packages/patterns:
+    dependencies:
+      react:
+        specifier: 'catalog:'
+        version: 19.2.6
     devDependencies:
       '@design-playground/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.15
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
