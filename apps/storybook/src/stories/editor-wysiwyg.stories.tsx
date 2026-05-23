@@ -1,5 +1,5 @@
 import { EditorWysiwygPreview, editorWysiwygMock } from "@design-playground/patterns"
-import type { Meta, StoryObj } from "@storybook/react-vite"
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 const meta = {
   title: "Editors/WYSIWYG/Raw Import",

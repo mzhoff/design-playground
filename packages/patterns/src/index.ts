@@ -1,4 +1,5 @@
 export * from "./admin-crud"
+export * from "./editor-wysiwyg"
 
 export const plannedPatternGroups = [
   "admin-crud",
