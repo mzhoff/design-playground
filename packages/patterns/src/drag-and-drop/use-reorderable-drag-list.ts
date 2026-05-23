@@ -1,3 +1,5 @@
+"use client"
+
 import type { DragEvent } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
 
