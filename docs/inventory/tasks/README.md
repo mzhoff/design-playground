@@ -32,7 +32,7 @@
 | INV-06 | prodSQL — drag-and-drop hook | prodSQL | Готово к ревью |
 | INV-07 | prodSQL — canvas как переиспользуемый компонент | prodSQL | Готово к ревью |
 | INV-08 | prodSQL — layout нижних и боковых панелей | prodSQL | Готово к ревью |
-| INV-09 | prodSQL — dashboard cards | prodSQL | Запланировано |
+| INV-09 | prodSQL — dashboard cards | prodSQL | Готово к ревью |
 | INV-10 | ChatModule и REVERIE — сравнение чатового UI | ChatModule, REVERIE | Запланировано |
 | INV-11 | REVERIE — сайт, карточки и motion-паттерны | REVERIE | Запланировано |
 | INV-12 | REVERIE — графики и аналитические компоненты | REVERIE | Запланировано |
