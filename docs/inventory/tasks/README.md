@@ -25,7 +25,7 @@
 | ID | Блок | Источник | Статус |
 | --- | --- | --- | --- |
 | INV-01 | Gigonom 2026 — CRUD views админки | Gigonom 2026 | Готово к ревью |
-| INV-02 | Gigonom 2026 — WYSIWYG и редакторские панели | Gigonom 2026 | Запланировано |
+| INV-02 | Gigonom 2026 — WYSIWYG и редакторские панели | Gigonom 2026 | Готово к ревью |
 | INV-03 | Gigonom 2026 — настройки, OpenRouter и боковые панели | Gigonom 2026 | Запланировано |
 | INV-04 | Gigonom 2026 — новый date picker | Gigonom 2026 | Запланировано |
 | INV-05 | Gigonom 2026 — левая боковая навигация | Gigonom 2026 | Запланировано |
