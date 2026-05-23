@@ -2,9 +2,10 @@ import type {
   EditorWorkspaceCatalogGroup,
   EditorWorkspaceInspectorSection,
   EditorWorkspacePane,
+  EditorWorkspacePaneId,
 } from "./types"
 
-export const editorWorkspacePanesFixture: Record<string, EditorWorkspacePane> = {
+export const editorWorkspacePanesFixture: Record<EditorWorkspacePaneId, EditorWorkspacePane> = {
   project: {
     id: "project",
     title: "Project",
