@@ -1,0 +1,137 @@
+import type { EditorWysiwygFixture } from "./contracts"
+
+export const editorWysiwygMock: EditorWysiwygFixture = {
+  title: "Как автоматизировать контент-маркетинг без потери контроля",
+  subtitle: "Сырой editor kit по мотивам Gigonom 2026 и REVERIE",
+  mode: "article",
+  platform: "blog",
+  status: "draft",
+  counters: {
+    characters: 5830,
+    words: 842,
+    limit: 12_000,
+  },
+  activePanels: ["meta", "ai", "images", "annotations", "versions"],
+  toolbar: [
+    { id: "bold", label: "B", group: "format", shortcut: "⌘B" },
+    { id: "italic", label: "I", group: "format", shortcut: "⌘I" },
+    { id: "underline", label: "U", group: "format", shortcut: "⌘U" },
+    { id: "h2", label: "H2", group: "structure" },
+    { id: "h3", label: "H3", group: "structure" },
+    { id: "quote", label: "Quote", group: "structure" },
+    { id: "list", label: "List", group: "structure" },
+    { id: "image", label: "Image", group: "insert" },
+    { id: "table", label: "Table", group: "insert", disabled: true },
+    { id: "annotate", label: "Аннотация", group: "ai" },
+    { id: "shorten", label: "Сократить", group: "ai" },
+    { id: "facts", label: "Фактуры", group: "ai" },
+  ],
+  blocks: [
+    {
+      id: "lead",
+      kind: "paragraph",
+      label: "Lead paragraph",
+      selected: true,
+      content:
+        "Редактор должен помогать команде быстро собирать статьи, карточки и публикации под разные площадки, не смешивая UI с CMS-логикой.",
+      meta: "Выделение активно, доступна floating toolbar",
+    },
+    {
+      id: "h2-control",
+      kind: "heading",
+      label: "H2",
+      content: "Контроль остается у редактора",
+    },
+    {
+      id: "quote",
+      kind: "quote",
+      label: "Quote",
+      content:
+        "AI-панели предлагают варианты, но сохранение, публикация и история версий должны оставаться явными действиями пользователя.",
+    },
+    {
+      id: "image-hero",
+      kind: "image",
+      label: "Article image block",
+      content: "AI-обложка: 16:9, generated, crop center, caption enabled",
+      meta: "Нужны upload, generate, replace, caption, fit/fill/crop",
+    },
+    {
+      id: "list",
+      kind: "list",
+      label: "Checklist",
+      content: "Отделить UI, data adapters, prompt presets и provider orchestration.",
+    },
+  ],
+  images: [
+    {
+      id: "cover",
+      title: "Hero cover",
+      ratio: "16:9",
+      source: "generated",
+      status: "ready",
+      prompt: "Minimal SaaS editorial workflow, layered panels, neutral light studio",
+    },
+    {
+      id: "reference",
+      title: "Reference image",
+      ratio: "1:1",
+      source: "upload",
+      status: "ready",
+    },
+    {
+      id: "variant",
+      title: "Generated variant",
+      ratio: "4:3",
+      source: "generated",
+      status: "generating",
+      prompt: "Alternative cover with more contrast and product UI fragments",
+    },
+  ],
+  annotations: [
+    {
+      id: "ann-1",
+      title: "Уточнить источник",
+      anchor: "не смешивая UI с CMS-логикой",
+      body: "Добавить пример adapter-контракта для медиа и OpenRouter.",
+      status: "needs-review",
+    },
+    {
+      id: "ann-2",
+      title: "Сократить абзац",
+      anchor: "Контроль остается у редактора",
+      body: "AI rewrite может предложить короткую версию, но не должен применять ее сам.",
+      status: "draft",
+    },
+    {
+      id: "ann-3",
+      title: "Готово для публикации",
+      anchor: "AI-панели предлагают варианты",
+      body: "Паттерн подтвержден для Storybook-сценария.",
+      status: "published",
+    },
+  ],
+  versions: [
+    {
+      id: "v3",
+      title: "Текущий черновик",
+      createdAt: "23 мая, 14:20",
+      author: "Editor AI",
+      status: "current",
+    },
+    {
+      id: "v2",
+      title: "После фактчекинга",
+      createdAt: "23 мая, 13:45",
+      author: "Mikhail",
+      status: "saved",
+    },
+    {
+      id: "v1",
+      title: "AI draft",
+      createdAt: "23 мая, 12:10",
+      author: "OpenRouter preset",
+      status: "generated",
+    },
+  ],
+}

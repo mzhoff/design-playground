@@ -383,3 +383,31 @@ Figma:
 - отмечены зависимости: выполнено.
 - предложено, что копировать сырьем: выполнено.
 - описаны smoke-сценарии будущего теста: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: перенесено в PR этапа 3.
+
+Что добавлено:
+
+- `packages/patterns/src/drag-and-drop` — сырой interaction drag-and-drop kit;
+- `useReorderableDragList` — переносимый native HTML DnD hook;
+- `applyHiddenDragImage` — transparent drag image helper;
+- `moveArrayItem` — чистый immutable reorder helper;
+- `DragAndDropPreview` — Storybook-ready preview с live reorder и sidebar/domain adapter reference;
+- `apps/storybook/src/stories/interaction-drag-and-drop.stories.tsx` — истории `Interaction / Drag and Drop / Raw Import`.
+
+Принятое техническое решение:
+
+- hook перенесен без prodSQL `Table`, `Domain`, Zustand store, `GroupMode`, `SortMode` и canvas state;
+- `new Image()` защищен проверкой browser environment, чтобы не ломать SSR import;
+- cross-group move оставлен как pending-confirmation pattern, не как generic core logic;
+- `react-dnd` не добавляется в зависимости, потому что проверенная логика prodSQL построена на native HTML DnD.
+
+Известный технический долг:
+
+- добавить keyboard reorder contract и реализацию;
+- добавить live region для picked/moved/dropped/cancelled;
+- добавить touch/pointer слой или выбрать отдельную стратегию для mobile;
+- заменить story-only sidebar/domain reference на полноценный adapter после задач `INV-05` и `INV-08`;
+- написать smoke tests для `moveArrayItem` и `useReorderableDragList` после стабилизации package boundary.

@@ -10,7 +10,9 @@
     "src/**/*.tsx",
     "src/**/*.mdx",
     "../../packages/ui-react/src/**/*.ts",
-    "../../packages/ui-react/src/**/*.tsx"
+    "../../packages/ui-react/src/**/*.tsx",
+    "../../packages/patterns/src/**/*.ts",
+    "../../packages/patterns/src/**/*.tsx"
   ],
   "exclude": ["node_modules", "storybook-static"]
 }

@@ -295,3 +295,30 @@ Entry point сайта:
 - Зафиксированы Storybook-сценарии.
 - Зафиксирован Playground preview.
 - Зафиксирована необходимость Figma-слепка.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой vertical slice перенесен в монорепозиторий.
+
+Добавлено:
+
+- `packages/patterns/src/website-blocks` — website blocks / motion raw kit;
+- hero browser mockup section;
+- benefit feature card grid;
+- sticky scroll-driven feature showcase с accordion rail и screen frame;
+- tool/case carousel с tabs и autoplay;
+- gradient CTA block;
+- `apps/storybook/src/stories/website-blocks.stories.tsx` — Storybook-сценарий `Website Blocks/Motion/Raw Import`.
+
+Решение по переносу:
+
+- переносим структуру и UX-паттерны, а не REVERIE-specific assets, i18n keys, router и `motion/react` dependency;
+- `FeaturesAccordion` зафиксирован как главный референс для будущего `ScrollDrivenFeatureShowcase`;
+- реальные scroll detection, `useScroll/useTransform`, reduced motion и pause-on-hover будут возвращаться после Figma-слепка и API-решения.
+
+Известный технический долг:
+
+- нет настоящего parallax/scroll progress binding;
+- carousel без pause-on-hover и direction-aware transitions;
+- media slots представлены mockup-блоками;
+- после Figma нужно выделить отдельные patterns и shared motion primitives.

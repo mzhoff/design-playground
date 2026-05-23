@@ -198,3 +198,38 @@
 - Кандидаты на vertical kits предложены.
 - Отдельно зафиксировано, что точно не переносим.
 - Предложены Storybook-структура, Playground preview и порядок сырого импорта.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: выполнено в ветке `stage-3-raw-vertical-imports`.
+
+### Что добавлено
+
+- `packages/patterns/src/marketing-automation/types.ts` — временные UI-контракты для сложных сценариев контент-маркетинга.
+- `packages/patterns/src/marketing-automation/fixtures.ts` — mock-данные для Storybook.
+- `packages/patterns/src/marketing-automation/marketing-automation.tsx` — сырой vertical kit REVERIE marketing automation.
+- `packages/patterns/src/marketing-automation/README.md` — происхождение, ограничения и технический долг.
+- `apps/storybook/src/stories/marketing-automation.stories.tsx` — Storybook-сценарии по наборам.
+
+### Решение по импорту
+
+Переносим не page-level код REVERIE, а слой повторяемых продуктовых UI-паттернов. API, routing, BFF, Telegram publish, editor engine и AI orchestration остаются за пределами дизайн-системы. Это сохраняет полезную UX-структуру и не приносит проектные зависимости в пакет.
+
+### Перенесенные паттерны
+
+- Content production board.
+- Topic funnel board.
+- AI generation actions panel.
+- Post editor shell с правым rail, version history и provider preview.
+- Scheduling calendar preview.
+- Media library grid.
+- Channel knowledge cards.
+- Brand context workspace.
+
+### Известный технический долг
+
+- Разрезать общий raw kit на отдельные vertical kits после Figma-сравнения.
+- Согласовать единый `ContentWorkflowItem` и статусный словарь.
+- Подключить общий drag-and-drop interaction contract из INV-06.
+- Добавить provider-specific preview adapters без небезопасного HTML-render.
+- Перевести все цвета, spacing и размеры в semantic tokens.

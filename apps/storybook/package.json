@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@design-playground/patterns": "workspace:*",
     "@design-playground/ui-react": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",

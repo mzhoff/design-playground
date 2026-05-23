@@ -435,3 +435,30 @@ Figma:
 - описаны внешние зависимости: выполнено.
 - отделена визуальная часть от SQL-домена: выполнено.
 - предложен минимальный Storybook-сценарий: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой vertical slice перенесен в монорепозиторий.
+
+Добавлено:
+
+- `packages/patterns/src/canvas-workspace` — сырой canvas workspace kit;
+- `useCanvasNavigation` — pan/zoom, wheel pan, ctrl/cmd wheel zoom, middle mouse pan;
+- `useCanvasBoxSelection` — rubber-band selection в world coordinates;
+- `CanvasGridBackground` и `CanvasZoomIndicator`;
+- `CanvasWorkspacePreview` — generic nodes/edges preview без SQL-домена;
+- `apps/storybook/src/stories/canvas-workspace.stories.tsx` — Storybook-сценарий `Canvas/Core/Raw Import`.
+
+Решение по переносу:
+
+- переносим primitives и поведение canvas близко к prodSQL;
+- не переносим SQL domain, semantic persistence, FK/PK, schema diff, validation и code mode;
+- ERD/table-node слой остается будущим adapter/pattern, а не core API.
+
+Известный технический долг:
+
+- node drag пока живет только внутри preview и не связан с history;
+- edge layer демонстрационный, без ports, handles, relation cardinality и drag-to-connect;
+- culling, LOD и minimap не перенесены;
+- keyboard/touch accessibility требует отдельного проектирования;
+- после Figma-слепка нужно разделить слой на `canvas-core`, `canvas-workspace` и domain adapters.

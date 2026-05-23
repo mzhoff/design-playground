@@ -237,3 +237,26 @@ Figma:
 - отмечены UI-компоненты для выноса: выполнено.
 - отдельно перечислена app/backend logic: выполнено.
 - указаны состояния для Storybook: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: перенесено в PR этапа 3.
+
+Что добавлено:
+
+- `packages/patterns/src/settings-provider` — сырой settings/provider connection kit;
+- `SettingsProviderPreview` — settings shell с локальной навигацией, provider card, credential form, details form и metrics aside;
+- `settingsProviderConnectedMock`, `settingsProviderDisconnectedMock`, `settingsProviderErrorMock` — mock-состояния для Storybook;
+- `apps/storybook/src/stories/settings-provider.stories.tsx` — истории `Settings / Provider Connection / Raw Import`.
+
+Принятое техническое решение:
+
+- OpenRouter оставлен только как demo fixture, а компонент назван generic `SettingsProviderPreview`;
+- реальные `/api/cms/v1/openrouter-*`, `requestJson`, env, secret storage и backend orchestration не переносятся в design-system package;
+- глобальная левая админская навигация зафиксирована как пересечение, но переносится отдельно в `INV-05`.
+
+Известный технический долг:
+
+- `StatusPill`, `MetricRow`, `Field`, `SelectControl`, `MessageBanner` нужно позже выделить в `ui-react` или унифицировать с существующими primitives;
+- provider settings schema пока описана простыми `select/textarea` полями, без финального API;
+- accessibility и focus flow формы подключения нужно проверить после Figma-слепка и реального adapter-примера.

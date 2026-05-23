@@ -259,3 +259,28 @@ Figma:
 - отмечены зависимости: выполнено.
 - перечислены accessibility-вопросы: выполнено.
 - предложен план доведения до дизайн-системного компонента: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: перенесено в PR этапа 3.
+
+Что добавлено:
+
+- `packages/ui-react/src/date-picker` — сырой date picker family kit;
+- `UiDatePickerPreview` — Storybook-ready preview для `single`, `datetime` и `range` режимов;
+- `uiDatePickerMock`, `uiDateRangePickerMock`, `uiDatePickerEmptyMock` — mock-состояния;
+- `apps/storybook/src/stories/forms-date-picker.stories.tsx` — истории `Forms / Date Picker / Raw Import`.
+
+Принятое техническое решение:
+
+- single/date-time/range лежат рядом как семейство одного date-picker core, а не как один перегруженный production API;
+- `TimeSlider` включен в сырой preview, потому что это уникальная часть Gigonom UX;
+- внешний `React DayPicker` пока не добавлен как dependency, чтобы не менять runtime до отдельного решения; shadcn-подход зафиксирован как архитектурный ориентир.
+
+Известный технический долг:
+
+- добавить production keyboard navigation по дням;
+- добавить Escape/outside click, focus return и live region;
+- решить, какой core использовать: свой или `React DayPicker`;
+- описать min/max, disabled dates, reverse range selection, timezone и invalid value behavior;
+- после Figma-слепка выделить публичные `DatePicker`, `DateTimePicker`, `DateRangePicker`, `DateRangeFilter`, `TimeSlider`.

@@ -467,3 +467,42 @@ Playground:
 - выбор view mode;
 - включение loading/error/empty states;
 - переключение плотности, радиусов и базовых токенов после появления token layer.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой импорт выполнен для первого визуального среза `Admin / CRUD`.
+
+Что добавлено:
+
+- `packages/patterns/src/admin-crud/contracts.ts` — временные контракты ресурса, item, view modes и статусов;
+- `packages/patterns/src/admin-crud/mock-data.ts` — стабильные mock-данные для Storybook;
+- `packages/patterns/src/admin-crud/admin-crud-preview.tsx` — preview-компонент с list, cards, kanban и calendar modes;
+- `packages/patterns/src/admin-crud/README.md` — происхождение, ограничения и явные долги;
+- `apps/storybook/src/stories/admin-crud.stories.tsx` — истории `Admin / CRUD / Raw Import`.
+
+Что сохранено близко к исходнику:
+
+- режимы `list`, `cards`, `kanban`, `calendar`;
+- поиск по ресурсу;
+- archive toggle;
+- статусный workflow `draft`, `in_review`, `scheduled`, `published`, `archived`;
+- drag-and-drop карточек между колонками Kanban;
+- календарное отображение по `scheduledFor`.
+
+Что намеренно изолировано:
+
+- Next.js routing;
+- REST data fetching;
+- delete/update API;
+- localStorage view mode persistence;
+- lead CRM drawer;
+- create/edit forms;
+- users CRUD.
+
+Технический долг:
+
+- inline-стили временные и нужны только для быстрого визуального осмотра;
+- API компонента не считается финальным;
+- timeline оставлен в контракте как будущий режим, но пока не рендерится;
+- `AdminCrudPreview` пока объединяет shell и view implementations в одном файле;
+- перед стандартизацией нужен Figma-слепок и сравнение с исходной админкой Gigonom 2026.

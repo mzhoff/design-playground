@@ -676,3 +676,30 @@ Figma:
 - описаны состояния resize/collapse/open/close: выполнено.
 - указаны общие компоненты поля, карточки, таблицы: выполнено.
 - предложена схема универсализации для будущего видео-редактора: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой vertical slice перенесен в монорепозиторий.
+
+Добавлено:
+
+- `packages/patterns/src/editor-workspace` — editor workspace raw kit;
+- fixed dock layout с зонами `project`, `library`, `canvas`, `behavior`, `inspector`;
+- toggle states для left/right/bottom/canvas focus;
+- bottom panel resize через header handle;
+- generic tabs, catalog rows, inspector sections и timeline-like bottom zone;
+- `apps/storybook/src/stories/editor-workspace.stories.tsx` — Storybook-сценарий `Layouts/Panels/Raw Import`.
+
+Решение по переносу:
+
+- переносим панельную механику как preview/pattern, а не как финальный docking engine;
+- не добавляем `react-resizable-panels` на сыром этапе, чтобы не закреплять runtime dependency до Figma и API-решения;
+- SQL/project state, semantic persistence, CodeMirror и React Query оставлены в source app layer.
+
+Известный технический долг:
+
+- drag tabs между зонами не перенесен;
+- resize реализован только для нижней панели;
+- accessibility для keyboard resize и tab drag не спроектирована;
+- будущий видео-редактор потребует отдельного adapter-слоя для timeline, media library и inspector;
+- после Figma-слепка нужно выделить `dock-layout`, `editor-workspace`, `catalog-panel` и `inspector`.
