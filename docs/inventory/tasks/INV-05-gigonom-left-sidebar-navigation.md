@@ -337,3 +337,28 @@ Figma:
 - отмечены состояния: выполнено.
 - указано, где нужен drag-and-drop: выполнено.
 - описаны props для универсализации: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: перенесено в PR этапа 3.
+
+Что добавлено:
+
+- `packages/patterns/src/navigation-sidebar` — сырой navigation/sidebar kit;
+- `SidebarNavigationPreview` — data-driven preview левой админской панели;
+- `sidebarNavigationMock`, `sidebarNavigationCollapsedMock`, `sidebarNavigationReorderMock` — mock-состояния;
+- `apps/storybook/src/stories/navigation-sidebar.stories.tsx` — истории `Navigation / Sidebar / Raw Import`.
+
+Принятое техническое решение:
+
+- текущие Gigonom routes перенесены как demo data, а не как часть API компонента;
+- `next/link`, `usePathname`, auth/session и sign out не переносятся в UI/pattern package;
+- reorder mode добавлен только визуально: drag handles, locked group/item, будущие точки интеграции;
+- реальный drag-and-drop hook будет изучаться и подключаться отдельно в `INV-06`.
+
+Известный технический долг:
+
+- реализовать pointer и keyboard reorder после выбора DnD hook;
+- решить, нужен ли icon-only collapsed режим как обязательный;
+- разделить будущий `ui-react/sidebar` и `patterns/navigation/admin-shell`;
+- добавить adapter example для Next.js routing только после стабилизации API.

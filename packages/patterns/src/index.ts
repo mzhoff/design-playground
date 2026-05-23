@@ -1,11 +1,13 @@
 export * from "./admin-crud"
 export * from "./editor-wysiwyg"
+export * from "./navigation-sidebar"
 export * from "./settings-provider"
 
 export const plannedPatternGroups = [
   "admin-crud",
   "editor-wysiwyg",
   "settings-provider",
+  "navigation-sidebar",
   "chat-assistant",
   "canvas",
   "charts",
