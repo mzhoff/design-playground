@@ -515,3 +515,37 @@ type MilestoneProgressData = {
 - Зафиксированы Storybook-сценарии.
 - Зафиксирован Playground preview.
 - Зафиксирована необходимость Figma-слепка.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: выполнено в ветке `stage-3-raw-vertical-imports`.
+
+### Что добавлено
+
+- `packages/patterns/src/charts-analytics/types.ts` — контракты данных для KPI, time-series, chart series, distribution segments, ranked metrics, milestone progress и staged progress.
+- `packages/patterns/src/charts-analytics/fixtures.ts` — mock-данные для Storybook.
+- `packages/patterns/src/charts-analytics/charts-analytics.tsx` — сырой набор аналитических UI-паттернов.
+- `packages/patterns/src/charts-analytics/README.md` — происхождение, ограничения и технический долг.
+- `apps/storybook/src/stories/charts-analytics.stories.tsx` — Storybook-сценарии для визуального осмотра.
+
+### Решение по импорту
+
+На этом шаге не переносим `recharts` как прямую зависимость дизайн-системы. Вместо этого фиксируем дизайн-системный контракт данных и визуальные SVG/CSS-превью. Это дешевле для монорепозитория и не навязывает chart engine всем будущим потребителям до Figma-сравнения.
+
+### Перенесенные паттерны
+
+- KPI-карточки из analytics overview.
+- Area chart вовлечения.
+- Multi-series trend как задел под SEO/ERP-графики.
+- Ranked content list.
+- Donut distribution для content mix.
+- Segmented funnel bar.
+- Milestone progress.
+- Staged loading/progress panel.
+
+### Известный технический долг
+
+- Выбрать финальную стратегию chart engine: Recharts, adapter layer или отдельный `charts-core`.
+- Перевести сырьевые цвета REVERIE в semantic chart tokens.
+- Доработать tooltip, legend, hover/crosshair и accessibility-сценарии.
+- Разделить marketing analytics, ERP analytics и product workflow analytics после Figma-слепка.
