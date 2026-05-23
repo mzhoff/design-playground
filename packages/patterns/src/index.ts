@@ -1,4 +1,5 @@
 export * from "./admin-crud"
+export * from "./drag-and-drop"
 export * from "./editor-wysiwyg"
 export * from "./navigation-sidebar"
 export * from "./settings-provider"
@@ -7,6 +8,7 @@ export const plannedPatternGroups = [
   "admin-crud",
   "editor-wysiwyg",
   "settings-provider",
+  "drag-and-drop",
   "navigation-sidebar",
   "chat-assistant",
   "canvas",
