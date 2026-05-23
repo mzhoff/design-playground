@@ -814,3 +814,30 @@ Figma:
 - описаны props и данные: выполнено.
 - выделены общие элементы: выполнено.
 - предложена базовая дизайн-системная модель карточки: выполнено.
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: сырой vertical slice перенесен в монорепозиторий.
+
+Добавлено:
+
+- `packages/patterns/src/dashboard-cards` — dashboard/data-display raw kit;
+- `DashboardCard` — generic project/document/metric card shell;
+- `DashboardSchemaPreview` — generated preview на generic nodes/edges вместо SQL `Table`/`Relation`;
+- `CreateDashboardCard`;
+- `DashboardEmptyState`;
+- `DashboardCardsPreview`;
+- `apps/storybook/src/stories/dashboard-cards.stories.tsx` — Storybook-сценарий `Data Display/Dashboard Cards/Raw Import`.
+
+Решение по переносу:
+
+- переносим визуальную структуру project/document cards, create tile, empty state и schema preview;
+- не переносим router navigation, project/document CRUD, import/export, React Query, toast и SQL-типы;
+- карточки пока лежат в `packages/patterns`, а разделение на `ui-react` primitives будет после Figma-слепка.
+
+Известный технический долг:
+
+- inline rename и dropdown actions не перенесены;
+- loading skeleton, density variants, selected/pinned states и keyboard focus model требуют отдельного проектирования;
+- `DashboardSchemaPreview` пока generic, но без adapter-интерфейса для ERD/class diagram;
+- после Figma нужно выделить `Card`, `CardPreview`, `CardMeta`, `CardActions`, `EmptyState`, `MetricValue` в `packages/ui-react`.
