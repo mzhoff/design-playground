@@ -27,7 +27,7 @@ export function EditorWysiwygPreview({
   const [activePanel, setActivePanel] = useState<EditorPanelId>(defaultPanel)
   const [selectedAction, setSelectedAction] = useState<string>("annotate")
   const [selectedBlockId, setSelectedBlockId] = useState<string>(
-    fixture.blocks.find((block) => block.selected)?.id ?? fixture.blocks[0]?.id,
+    fixture.blocks.find((block) => block.selected)?.id ?? fixture.blocks[0]?.id ?? "",
   )
   const selectedBlock = useMemo(
     () => fixture.blocks.find((block) => block.id === selectedBlockId),
