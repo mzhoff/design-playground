@@ -2,6 +2,7 @@ export * from "./admin-crud"
 
 export const plannedPatternGroups = [
   "admin-crud",
+  "editor-wysiwyg",
   "chat-assistant",
   "canvas",
   "charts",

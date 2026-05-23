@@ -667,3 +667,35 @@ Playground:
 | Reverie prototype менее зрелый | markdown editor, mock AI, prototype state | Брать идеи и UI-паттерны, не считать код production-ready |
 | Serialized state compatibility | Lexical JSON может стать breaking contract | Нужны versioned fixtures и migration notes |
 | Visual regression | редактор завязан на точную типографику и image layout | Нужны Storybook screenshots и Figma слепок до стандартизации |
+
+## Этап 3: сырой импорт вертикального набора
+
+Статус: перенесено в PR этапа 3.
+
+Что добавлено:
+
+- `packages/patterns/src/editor-wysiwyg` — сырой editor kit для визуального осмотра;
+- `EditorWysiwygPreview` — оболочка редактора статьи с floating toolbar, slash menu и правыми панелями;
+- `editorWysiwygMock` — mock-данные для блоков, AI-действий, изображений, аннотаций и версий;
+- `apps/storybook/src/stories/editor-wysiwyg.stories.tsx` — истории `Editors / WYSIWYG / Raw Import`.
+
+Принятое техническое решение:
+
+- реальный `LexicalEditorField` пока не импортирован как runtime-зависимость, чтобы не тащить Lexical, editor theme и backend adapters в дизайн-систему до визуального согласования;
+- на этом шаге перенесен визуальный vertical slice и контракты, которые показывают структуру будущего editor kit;
+- OpenRouter, media upload, CMS routes, audit log и `blogPostId` оставлены как consumer app logic.
+
+Известный технический долг:
+
+- нужно отдельно решить, будет ли `editor-core` самостоятельным package внутри design playground или останется adapter-пакетом потребителя;
+- image block нужно декомпозировать на `image-frame`, `upload-dropzone`, `prompt-panel`, `generation-variants`;
+- annotation overlay требует отдельного accessibility и positioning аудита;
+- platform-aware toolbar из REVERIE пока отражен как идея, а не как полноценная конфигурационная модель.
+
+Минимальные mock-сценарии для Storybook:
+
+- статья с активным выделением и floating toolbar;
+- AI assistant panel;
+- image generation panel;
+- annotations panel;
+- version history panel.
