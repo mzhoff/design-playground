@@ -384,3 +384,22 @@ Security Sphere показывает две разные frontend/backend гра
 - Отмечены слабые места.
 - Зафиксированы требования совместимости.
 - Предложены будущие integration checks.
+
+## Этап 3: фиксация compatibility target
+
+Статус: выполнено в ветке `stage-3-raw-vertical-imports`.
+
+### Что добавлено
+
+- `docs/integration/security-sphere-consumer-compatibility.md` — отдельный integration guide по Security Sphere как эталонному потребителю.
+
+### Решение по этапу 3
+
+Для INV-14 не делаем сырой импорт компонентов. Этот пункт инвентаризации отвечает за архитектурную совместимость, а не за UI-набор. Главная ценность — зафиксировать ограничения реального потребителя: Next.js, pnpm, Turborepo, Tailwind 4, FSD, Docker standalone, REST/OpenAPI и GraphQL boundaries.
+
+### Критерий готовности
+
+- Security Sphere зафиксирован как compatibility target.
+- Требования к будущим пакетам дизайн-системы вынесены в отдельный integration guide.
+- Сформулированы будущие consumer integration checks.
+- Отдельно зафиксировано, что backend, API clients, codegen, deploy scripts и app-level routing не переносятся в дизайн-систему.
